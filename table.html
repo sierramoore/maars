@@ -7,104 +7,117 @@
 		* {
 			font-family: 'Artifika', serif;
 		}
-		body{
-			color:white;
+
+		body {
+			color: white;
 			background-color: peachpuff;
 		}
-		.divBox{
+
+		.divBox {
 			box-sizing: border-box;
 			width: 200px;
 			height: 150px;
-			background-color:#0C804E;
-			text-align:center;
+			background-image: url("images/table-occupied.png");
+            background-repeat: no-repeat;
+            background-position: center;
+			text-align: center;
 		}
-		input{
-			background-color:darkgray;
-			margin:5px;
-			color:midnightblue;
+
+		input {
+			background-color: darkgray;
+			margin-top: 60px;
+			color: midnightblue;
 			font-weight: bold;
 
 		}
 
-		p{
-			font-size:25px;
+		h1 {
+			font-size: 20px;
 		}
-		.occupied{
-			background-color:#AC1515;
+
+		.occupied {
 			box-sizing: border-box;
 			width: 200px;
 			height: 150px;
-			text-align:center;
+			text-align: center;
+			background-image: url("images/table-occupied.png");
 		}
-		</style>
+        p{
+             margin:5px;
+            font-size: 20px;
+         }
+	</style>
 </head>
 <body>
 <script type="text/javascript">
-	var clicked = false;
-	var sec = 0;
+    var clicked = false;
+    var sec = 0;
 
-	function startClock() {
-	    if (clicked === false) {
-	        clock = setInterval("updateTimer()", 1000);
-	        clicked = true;
-	    }
-	    else if (clicked === true) {
-	    }
+    function startClock() {
+        if (clicked === false) {
+            clock = setInterval("updateTimer()", 1000);
+            clicked = true;
+        }
+        else if (clicked === true) {
+        }
 
-	}
+    }
 
-	function formatSec(s) {
-		if (s < 10)
-			return "0"+s;
-		else
-		    return s;
-	}
+    function formatSec(s) {
+        if (s < 10)
+            return "0" + s;
+        else
+            return s;
+    }
+
     function formatMin(m) {
         if (m < 10)
-            return "0"+m;
+            return "0" + m;
         else
             return m;
     }
 
-	function updateTimer() {
-	    sec++;
-		let minDisp = Math.floor(sec/60);
-		let secDisp = sec%60;
-	    document.getElementById("timer").innerHTML =  formatMin(minDisp) + ":" + formatSec(secDisp);
-	}
+    function updateTimer() {
+        sec++;
+        let minDisp = Math.floor(sec / 60);
+        let secDisp = sec % 60;
+        document.getElementById("timer").innerHTML = formatMin(minDisp) + ":" + formatSec(secDisp);
+    }
 
-	function stopClock() {
-	    window.clearInterval(clock);
-	    sec = 0;
-	    document.getElementById("timer").innerHTML=0;
-	    clicked = false;
+    function stopClock() {
+        window.clearInterval(clock);
+        sec = 0;
+        document.getElementById("timer").innerHTML = 0;
+        clicked = false;
 
-	}
-	function setTimeout(){
-		var goTime;
-		goTime = setTimeout(60000);
-	}
-	function colorChange(){
-            var x = document.getElementById("occupied");
-            if (x.className === "divBox") {
-                x.className = "occupied";
-            } else {
-                x.className = "divBox";
-            }
+    }
 
-	}
+    function setTimeout() {
+        var goTime;
+        goTime = setTimeout(60000);
+    }
 
+    function colorChange() {
+        var x = document.getElementById("occupied");
+        if (x.className === "divBox") {
+            x.className = "occupied";
+        } else {
+            x.className = "divBox";
+        }
+
+    }
 
 
 </script>
 <div class="divBox" id="occupied" onclick="colorChange()">
-	<p>Table 1</p>
-<input type="submit" id="start-clock" value="Seated" name="submit" onClick="startClock()"/>
-
-<div id="timer">00:00</div>
-
-<input class="back" type="submit" id="stop-clock" value="Finished" name="submit" onClick="stopClock()"/>
+	<h1>Table 1</h1>
+    <p id="timer" class="time" >00:00</p>
+	<input type="submit" id="start-clock" value="Seated" name="submit" onClick="startClock()"/>
+	<input class="back" type="submit" id="stop-clock" value="Finished" name="submit" onClick="stopClock()"/>
 </div>
+
+
+
 
 </body>
 </html>
