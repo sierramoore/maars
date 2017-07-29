@@ -13,21 +13,32 @@
 			background-color: peachpuff;
 		}
 
-		.divBox {
+		.tableFree {
 			box-sizing: border-box;
 			width: 200px;
 			height: 150px;
-			background-image: url("images/table-occupied.png");
+			background-image: url("images/table-free.png");
             background-repeat: no-repeat;
             background-position: center;
 			text-align: center;
 		}
 
+		.tableOccupied {
+			box-sizing: border-box;
+			width: 200px;
+			height: 150px;
+			text-align: center;
+			background-image: url("images/table-occupied.png");
+            background-repeat: no-repeat;
+            background-position: center;
+		}
+
 		input {
 			background-color: darkgray;
-			margin-top: 60px;
+			margin-top: 65px;
 			color: midnightblue;
 			font-weight: bold;
+            width: 100px;
 
 		}
 
@@ -35,13 +46,6 @@
 			font-size: 20px;
 		}
 
-		.occupied {
-			box-sizing: border-box;
-			width: 200px;
-			height: 150px;
-			text-align: center;
-			background-image: url("images/table-occupied.png");
-		}
         p{
              margin:5px;
             font-size: 20px;
@@ -52,16 +56,7 @@
 <script type="text/javascript">
     var clicked = false;
     var sec = 0;
-
-    function startClock() {
-        if (clicked === false) {
-            clock = setInterval("updateTimer()", 1000);
-            clicked = true;
-        }
-        else if (clicked === true) {
-        }
-
-    }
+    var occupied = false;
 
     function formatSec(s) {
         if (s < 10)
@@ -75,6 +70,16 @@
             return "0" + m;
         else
             return m;
+    }
+
+    function startClock() {
+        if (clicked === false) {
+            clock = setInterval("updateTimer()", 1000);
+            clicked = true;
+        }
+        else if (clicked === true) {
+        }
+
     }
 
     function updateTimer() {
@@ -92,28 +97,32 @@
 
     }
 
-    function setTimeout() {
-        var goTime;
-        goTime = setTimeout(60000);
-    }
-
     function colorChange() {
-        var x = document.getElementById("occupied");
-        if (x.className === "divBox") {
-            x.className = "occupied";
+        var x = document.getElementById("table1");
+        if (x.className === "tableFree") {
+            x.className = "tableOccupied";
         } else {
-            x.className = "divBox";
+            x.className = "tableFree";
         }
 
     }
 
+    function toggleTable() {
+        occupied = !occupied;
 
+        if (occupied) {
+            startClock();
+        }
+        else {
+            stopClock();
+        }
+
+    }
 </script>
-<div class="divBox" id="occupied" onclick="colorChange()">
+<div id="table1" class="tableFree" onclick="colorChange()">
 	<h1>Table 1</h1>
     <p id="timer" class="time" >00:00</p>
-	<input type="submit" id="start-clock" value="Seated" name="submit" onClick="startClock()"/>
-	<input class="back" type="submit" id="stop-clock" value="Finished" name="submit" onClick="stopClock()"/>
+	<input id="start-clock" type="submit" value="Seated" name="submit" onClick="toggleTable()"/>
 </div>
 
 
