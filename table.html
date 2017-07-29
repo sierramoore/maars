@@ -22,6 +22,17 @@
             font-size: 20px;
         }
 
+        .timerRed {
+            margin: 5px;
+            font-size: 20px;
+            color: darkred;
+            animation: blinker 1s linear infinite;
+        }
+
+        @keyframes blinker {
+            50% { color: red; }
+        }
+
         .tableMap {
             list-style-type: none;
             display: inline-block;
@@ -85,6 +96,16 @@
 
         let timer = table.querySelector("#timer");
         timer.innerHTML = formatTimeXX(min) + ":" + formatTimeXX(sec);
+
+        if (timeInSec == 0) {
+            // reset timer style to normal
+            timer.className = "timer";
+        }
+        else if (timeInSec == 5) { // WARNING: 5sec is for demo purposes!! TODO change it
+            // switch to the red flashing style
+            timer.className = "timerRed";
+        }
+
     }
 
     function updateTableTimer(table) {
