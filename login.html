@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link href="https://fonts.googleapis.com/css?family=Artifika" rel="stylesheet">
+	<title>Maars Login</title>
+	<style type="text/css">
+		*{
+			text-align: center;
+			color:darkorange;
+			align-content: center;
+			font-family: 'Artifika', serif;
+		}
+		body{
+			background-image: url("https://media.wired.com/photos/59267ed78d4ebc5ab806a790/4:3/w_2400,c_limit/Mars_Op-Ed_200144771-001.jpg");
+		}
+		h1{
+			background-color:MidnightBlue;
+			border: solid blue;
+			padding:10px;
+		}
+		form{
+			background-color:MidnightBlue;
+			border: solid blue;
+			padding:5px;
+			font-size:20pt;
+		}
+		div, input[type=button]{
+			border-radius: 10%;
+			background-color:darkorange;
+			color:MidnightBlue;
+			border:none;
+			display: inline-block;
+			
+		}
+		
+		input {
+			padding:10px 30px;
+			margin: 5px;
+			font-size:20pt;
+			background-color:lightgrey;
+			border-radius: 50%;
+		}
+		input [type="button"]{
+			margin:center;
+		}
+		
+		
+	</style>
+</head>
+<body>
+	<h1>Maars Employee Login Portal</h1>
+
+  <div>
+
+	<form name="login">
+	  <input type="text" name="userid" placeholder="Enter Username"/>
+	   <br/>
+	  <input type="password" name="pswrd" placeholder="Enter Password"/><br/>
+	  <div><input type="button" onclick="check(this.form)" value="Login"/></div>
+	  
+	</form>
+
+  </div>
+
+ <script language="javascript">
+ 	function check(form)
+ 	{
+ 		if(form.userid.value == "maars" && form.pswrd.value == "password")
+ 	{
+ 		alert("Correct Password and Username") /*window.open('target.html')*/
+ 	}
+ 	else
+    {
+      alert("Incorrect Password or Username")
+    }
+}
+ 
+ </script>
+</body>
+</html>

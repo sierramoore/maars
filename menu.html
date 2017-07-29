@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link href="https://fonts.googleapis.com/css?family=Artifika" rel="stylesheet">
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="">
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+		<style type="text/css">
+			*{
+				font-family: 'Artifika', serif;
+				
+				{box-sizing:border-box}
+			}
+			body{
+				background-color:peachpuff;
+				
+			}
+			h1{
+				background-color:MidnightBlue;
+				border: solid blue;
+				padding:10px;
+				color:darkorange;
+				text-align:center;
+			}
+			img{
+				height:150px;
+				width:150px;
+				display: block;
+			}
+			table{
+				  width:930px;
+			      margin:auto;
+			      border:1px solid silver;
+			      background:#FEF5EE; 
+				  font-family: 'Lobster', cursive;
+			  }
+			  th{
+				  color:MidnightBlue;
+				  font-family: 'Bree Serif', serif;
+				  text-align:center;
+			  }
+			  td{
+			  	color:#BF5C5C;
+				text-align:center;
+			  }
+			  td.price{
+				  color:black;
+			  }
+			  tr{
+				  text-align:center;
+			  }
+				  
+				  p.price{
+					  text-align:right;
+					  font-family: 'Lobster', cursive;
+				  }
+				  p{
+					  text-align:center;
+					  font-family: 'Lobster', cursive;
+					  
+				  }
+				  input{
+					  background-color:#F3F4D6;
+					  color:MidnightBlue;
+					  font-family: 'Lobster', cursive;
+					  border-radius: 20%;
+					  width:30%;
+					  
+				  }
+				  input[type="submit"]{
+				  	width:93%;
+				  }
+				  a{
+					  color:MidnightBlue;
+				  }
+				  a:hover{
+					  color:darkorange;
+				  }
+				  .slideshow-container {
+				    width: 50%;
+				    height:30%;
+				    position: relative;
+				    margin: auto;
+				    display: block;
+					}
+					.imgsize{
+						width: 100%;
+				        height:400px;
+				        position: relative;
+					}
+				  .prev, .next {
+				    cursor: pointer;
+				    position: absolute;
+				    top: 50%;
+				    width: auto;
+				    padding: 16px;
+				    margin-top: -22px;
+				    color: white;
+				    font-weight: bold;
+				    font-size: 18px;
+				    transition: 0.6s ease;
+				    border-radius: 0 3px 3px 0;
+				  }
+				  .next {
+				    right: 0;
+				    border-radius: 3px 0 0 3px;
+				  }
+				  .text {
+				    color: white;
+				    font-size: 15px;
+				    padding: 8px 12px;
+				    position: absolute;
+				    bottom: 15px;
+				    width: 100%;
+				    text-align: center;
+				  }
+				  .column-layout{
+				  	display:flex;
+				  	justify-content: flex-center;
+				  	padding: 20px 50px;
+				  }
+				  .main-column{
+				  		padding:10px 0px;
+				  		flex: 3;
+				  		order:2;
+				  }
+				  .sidebar{
+				  		flex: 1;
+				  		order:1;
+				  }
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #f1f1f1;
+    border: 1px solid #555;
+}
+li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+    color:MidnightBlue;
+}
+li {
+    text-align: center;
+    border-bottom: 1px solid #555;
+    background-color:#C3F3BE;
+}
+li:last-child {
+    border-bottom: none;
+}
+li a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+li a:hover:not(.active) {
+    background-color: lightgreen;
+    color: white;
+}
+</style>
+		</style>
+	</head>
+	<body>
+	  <h1>Maars Menu</h1>
+
+	  <div class="main-column">
+	        	<div class="slideshow-container">
+	  			<div class="mySlides fade">
+  
+	    		<img src="https://images.kitchenstories.de/recipeImages/RP03_23_09_MangoLassi_TitlePicture/RP03_23_09_MangoLassi_TitlePicture-medium-landscape-200.jpg" class="imgsize">
+				<div class="text">Maars Item Name</div>
+	 			</div>
+
+	  			<div class="mySlides fade">
+	    		<img src="https://s-media-cache-ak0.pinimg.com/736x/fd/34/cb/fd34cb1f271b40098924a936eeaf0bf3--asian-tea-tea-flavors.jpg" class="imgsize">
+				<div class="text">Maars Item Name</div>
+	 			</div>
+
+	  			<div class="mySlides fade">
+	    		<img src="http://i.telegraph.co.uk/multimedia/archive/01434/prose6_1434575c.jpg" class="imgsize">
+				<div class="text">Maars Item Name</div>
+	  		</div>
+	  			<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+	  			<a class="next" onclick="plusSlides(1)">&#10095;</a>
+				</div>
+	  			<br>
+				<div style="text-align:center">
+	   			<span class="dot" onclick="currentSlide(1)"></span> 
+	    		<span class="dot" onclick="currentSlide(2)"></span> 
+	    		<span class="dot" onclick="currentSlide(3)"></span> 
+	  			</div>
+	  	</div>
+	  
+	  <h3><a href="#">Seating</a></h3>
+	  
+<div class="sidebar">
+	  <div style="width:25%">
+	    <h3>Menu</h3>
+		<ul>
+	    <li><a href="#">Appetizers</a></li>
+	    <li><a href="#">Main Course</a></li>
+	    <li><a href="#">Dessert</a></li>
+		<li><a href="#">Drinks</a></li>
+	</ul>
+	  </div>
+</div>
+	 <table>
+		 <th align="center">- Drinks -</th>
+<table>
+	  <td><img src="https://images.kitchenstories.de/recipeImages/RP03_23_09_MangoLassi_TitlePicture/RP03_23_09_MangoLassi_TitlePicture-medium-landscape-200.jpg" align="left"><td>
+		  
+	  <th><b>Mango Lassi</b></th>
+	  <td align="center">A delicious martian drink made from mangos and yogurt.</td>
+	  <td class="price"><u>Price:</u> <br/>$ 2</td>
+	 <td><input type="number" min="0"/></td>
+	 <td><input type="submit" value="Add to cart"/></td>
+  </table>
+  <table>
+	 <td><img src="https://s-media-cache-ak0.pinimg.com/736x/fd/34/cb/fd34cb1f271b40098924a936eeaf0bf3--asian-tea-tea-flavors.jpg" align="left"></td>
+	 <th><b>Taro Milk Boba <br/>Tea</b></th>
+	 <td align="center">An out of this world tea with boba <br/>comets.</td>
+	
+	 <td class="price"><u>Price:</u> <br/>$ 2</td>
+	 <td><input type="number" min="0"/></td>
+	 <td><input type="submit" value="Add to cart"/></td> 
+  </table>
+  
+  <table>
+	 <td><img src="https://bebrainfit.com/wp-content/uploads/2017/01/yerba-mate-tea-720x480.jpg" align="left"></td>
+	 <th><b>Traditional Yerba Mate Tea</b></th>
+	 <td align="center">A popular south american energy booster.</td>
+	 <td class="price"><u>Price:</u> <br/>$ 2</td>
+	 <td><input type="number" min="0"/></td>
+	 <td><input type="submit" value="Add to cart"/></td> 
+  </table>
+  
+     <table>
+	 	<td><img src="http://i.telegraph.co.uk/multimedia/archive/01434/prose6_1434575c.jpg" align="left"></td>
+	 	<th><b>Raseberry Compote</b></th>
+	 	<td align="center">A refeshing slovic drink made with fresh naturally sweet raseberries.<td class="price"><u>Price:</u> <br/>$ 2</td>
+	 	   <td><input type="number" min="0"/></td>
+	 	  <td><input type="submit" value="Add to cart"/></td>
+     </table>
+
+  </table>
+  
+  
+  
+  <script language="javascript">
+	  var slideIndex = 1;
+	  showSlides(slideIndex);
+	  function plusSlides(n) {
+	    showSlides(slideIndex += n);
+	  }
+	  function currentSlide(n) {
+	    showSlides(slideIndex = n);
+	  }
+	  function showSlides(n) {
+	    var i;
+	    var slides = document.getElementsByClassName("mySlides");
+	    var dots = document.getElementsByClassName("dot");
+	    if (n > slides.length) {slideIndex = 1}    
+	    if (n < 1) {slideIndex = slides.length}
+	    for (i = 0; i < slides.length; i++) {
+	        slides[i].style.display = "none";  
+	    }
+	    for (i = 0; i < dots.length; i++) {
+	        dots[i].className = dots[i].className.replace(" active", "");
+	    }
+	    slides[slideIndex-1].style.display = "block";  
+	    dots[slideIndex-1].className += " active";
+	  }
+	  </script>
+	</body>
+</html>
