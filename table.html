@@ -1,132 +1,202 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<link href="https://fonts.googleapis.com/css?family=Artifika" rel="stylesheet">
-	<!-make a start timer button and end/clear timer button but when it ends toggle the time with empty table img->
-	<style type="text/css">
-		* {
-			font-family: 'Artifika', serif;
-		}
+    <link href="https://fonts.googleapis.com/css?family=Artifika" rel="stylesheet">
+    <!-make a start timer button and end/clear timer button but when it ends toggle the time with empty table img->
+    <style type="text/css">
+        * {
+            font-family: 'Artifika', serif;
+        }
 
-		body {
-			color: white;
-			background-color: peachpuff;
-		}
+        body {
+            color: white;
+            background-color: peachpuff;
+        }
 
-		.tableFree {
-			box-sizing: border-box;
-			width: 200px;
-			height: 150px;
-			background-image: url("images/table-free.png");
-            background-repeat: no-repeat;
-            background-position: center;
-			text-align: center;
-		}
-
-		.tableOccupied {
-			box-sizing: border-box;
-			width: 200px;
-			height: 150px;
-			text-align: center;
-			background-image: url("images/table-occupied.png");
-            background-repeat: no-repeat;
-            background-position: center;
-		}
-
-		input {
-			background-color: darkgray;
-			margin-top: 65px;
-			color: midnightblue;
-			font-weight: bold;
-            width: 100px;
-
-		}
-
-		h1 {
-			font-size: 20px;
-		}
-
-        p{
-             margin:5px;
+        h1 {
             font-size: 20px;
-         }
-	</style>
+        }
+
+        .timer {
+            margin: 5px;
+            font-size: 20px;
+        }
+
+        .tableMap {
+            list-style-type: none;
+            display: inline-block;
+        }
+
+        li {
+            float: left;
+        }
+
+        .tableFree {
+            box-sizing: border-box;
+            width: 200px;
+            height: 150px;
+            margin-top: 50px;
+            text-align: center;
+            background-image: url("images/table-free.png");
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .tableOccupied {
+            box-sizing: border-box;
+            width: 200px;
+            height: 150px;
+            margin-top: 50px;
+            text-align: center;
+            background-image: url("images/table-occupied.png");
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .tableButtonFree {
+            background-color: darkgray;
+            margin-top: 65px;
+            color: midnightblue;
+            font-weight: bold;
+            width: 150px;
+        }
+
+        .tableButtonOccupied {
+            background-color: red;
+            margin-top: 65px;
+            color: midnightblue;
+            font-weight: bold;
+            width: 150px;
+        }
+    </style>
 </head>
 <body>
 <script type="text/javascript">
-    var clicked = false;
-    var sec = 0;
-    var occupied = false;
-
-    function formatSec(s) {
-        if (s < 10)
-            return "0" + s;
+    function formatTimeXX(t) {
+        if (t < 10)
+            return "0" + t;
         else
-            return s;
+            return t;
     }
 
-    function formatMin(m) {
-        if (m < 10)
-            return "0" + m;
-        else
-            return m;
+    function updateTableTimerView(table, timeInSec) {
+        let min = Math.floor(timeInSec / 60);
+        let sec = timeInSec % 60;
+
+        let timer = table.querySelector("#timer");
+        timer.innerHTML = formatTimeXX(min) + ":" + formatTimeXX(sec);
     }
 
-    function startClock() {
-        if (clicked === false) {
-            clock = setInterval("updateTimer()", 1000);
-            clicked = true;
-        }
-        else if (clicked === true) {
-        }
-
+    function updateTableTimer(table) {
+        let time = table.dataset.time;
+        time++;
+        table.dataset.time = time;
+        updateTableTimerView(table, time);
     }
 
-    function updateTimer() {
-        sec++;
-        let minDisp = Math.floor(sec / 60);
-        let secDisp = sec % 60;
-        document.getElementById("timer").innerHTML = formatMin(minDisp) + ":" + formatSec(secDisp);
-    }
+    function toggleTable(button) {
+        let table = button.parentNode;
+        let clock = table.dataset.clock;
 
-    function stopClock() {
-        window.clearInterval(clock);
-        sec = 0;
-        document.getElementById("timer").innerHTML = 0;
-        clicked = false;
+        if (isNaN(clock)) {
+            // table is currently free, let's occupy it
+            table.dataset.time = 0;
+            clock = setInterval(updateTableTimer, 1000, table);
 
-    }
-
-    function colorChange() {
-        var x = document.getElementById("table1");
-        if (x.className === "tableFree") {
-            x.className = "tableOccupied";
-        } else {
-            x.className = "tableFree";
-        }
-
-    }
-
-    function toggleTable() {
-        occupied = !occupied;
-
-        if (occupied) {
-            startClock();
+            table.className = "tableOccupied";
+            button.className = "tableButtonOccupied";
+            button.value = "Free Up Table";
         }
         else {
-            stopClock();
+            // table is currently occupied, let's free it
+
+            // stop the clock
+            clearInterval(clock);
+            clock = null;
+
+            // update the clock on the screen
+            updateTableTimerView(table, 0);
+
+            // update the widget
+            table.className = "tableFree";
+            button.className = "tableButtonFree";
+            button.value = "Seat Table";
         }
 
+        table.dataset.clock = clock;
     }
 </script>
-<div id="table1" class="tableFree" onclick="colorChange()">
-	<h1>Table 1</h1>
-    <p id="timer" class="time" >00:00</p>
-	<input id="start-clock" type="submit" value="Seated" name="submit" onClick="toggleTable()"/>
-</div>
-
-
-
-
+<ul class="tableMap" >
+    <li>
+        <div class="tableFree">
+            <h1>Table 1</h1>
+            <p id="timer" class="timer">00:00</p>
+            <input type="button" class="tableButtonFree" value="Seat Table" onClick="toggleTable(this)"/>
+        </div>
+    </li>
+    <li>
+        <div class="tableFree">
+            <h1>Table 2</h1>
+            <p id="timer" class="timer">00:00</p>
+            <input type="button" class="tableButtonFree" value="Seat Table" onClick="toggleTable(this)"/>
+        </div>
+    </li>
+    <li>
+        <div class="tableFree">
+            <h1>Table 3</h1>
+            <p id="timer" class="timer">00:00</p>
+            <input type="button" class="tableButtonFree" value="Seat Table" onClick="toggleTable(this)"/>
+        </div>
+    </li>
+    <li>
+        <div class="tableFree">
+            <h1>Table 4</h1>
+            <p id="timer" class="timer">00:00</p>
+            <input type="button" class="tableButtonFree" value="Seat Table" onClick="toggleTable(this)"/>
+        </div>
+    </li>
+    <li>
+        <div class="tableFree">
+            <h1>Table 5</h1>
+            <p id="timer" class="timer">00:00</p>
+            <input type="button" class="tableButtonFree" value="Seat Table" onClick="toggleTable(this)"/>
+        </div>
+    </li>
+    <li>
+        <div class="tableFree">
+            <h1>Table 6</h1>
+            <p id="timer" class="timer">00:00</p>
+            <input type="button" class="tableButtonFree" value="Seat Table" onClick="toggleTable(this)"/>
+        </div>
+    </li>
+    <li>
+        <div class="tableFree">
+            <h1>Table 7</h1>
+            <p id="timer" class="timer">00:00</p>
+            <input type="button" class="tableButtonFree" value="Seat Table" onClick="toggleTable(this)"/>
+        </div>
+    </li>
+    <li>
+        <div class="tableFree">
+            <h1>Table 8</h1>
+            <p id="timer" class="timer">00:00</p>
+            <input type="button" class="tableButtonFree" value="Seat Table" onClick="toggleTable(this)"/>
+        </div>
+    </li>
+    <li>
+        <div class="tableFree">
+            <h1>Table 9</h1>
+            <p id="timer" class="timer">00:00</p>
+            <input type="button" class="tableButtonFree" value="Seat Table" onClick="toggleTable(this)"/>
+        </div>
+    </li>
+    <li>
+        <div class="tableFree">
+            <h1>Table 10</h1>
+            <p id="timer" class="timer">00:00</p>
+            <input type="button" class="tableButtonFree" value="Seat Table" onClick="toggleTable(this)"/>
+        </div>
+    </li>
+</ul>
 </body>
 </html>
