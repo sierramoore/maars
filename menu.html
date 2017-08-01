@@ -397,7 +397,7 @@
         <td><img
                 src="https://s-media-cache-ak0.pinimg.com/736x/fd/34/cb/fd34cb1f271b40098924a936eeaf0bf3--asian-tea-tea-flavors.jpg"
                 align="left"></td>
-        <th><b>Taro Milk Boba <br/>Tea</b></th>
+        <th><b>Taro Milk Boba Tea</b></th>
         <td align="center">An out of this world tea with boba <br/>comets.</td>
 
         <td class="price"><u>Price:</u> <br/>$ 2</td>
@@ -461,7 +461,7 @@
 
     function extractTableData(table) {
         let name = table.querySelector("b").innerHTML;
-        let img = table.querySelector("img").src;
+        let icon = table.querySelector("img").src;
         let price = parseFloat(table.dataset.price);
         let qty = parseInt(table.querySelector("#qty").value);
 
@@ -470,7 +470,7 @@
         if (price > 0 && qty > 0) {
             data  = {
                 name : name,
-                img: img,
+                icon : icon,
                 price: price,
                 qty  : qty
             };
