@@ -460,7 +460,8 @@
     }
 
     function extractTableData(table) {
-        let name = "Test text";
+        let name = table.querySelector("b").innerHTML;
+        let img = table.querySelector("img").src;
         let price = parseFloat(table.dataset.price);
         let qty = parseInt(table.querySelector("#qty").value);
 
@@ -468,7 +469,8 @@
 
         if (price > 0 && qty > 0) {
             data  = {
-                name : 'Test name',
+                name : name,
+                img: img,
                 price: price,
                 qty  : qty
             };
