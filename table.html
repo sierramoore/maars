@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<dl>
 <head>
     <link href="https://fonts.googleapis.com/css?family=Artifika" rel="stylesheet">
     <!-make a start timer button and end/clear timer button but when it ends toggle the time with empty table img->
@@ -79,9 +79,26 @@
             font-weight: bold;
             width: 150px;
         }
+        header{
+            background-color:MidnightBlue;
+            border: solid blue;
+            padding:10px;
+            color:darkorange;
+            text-align:center;
+            font-size: 35px;
+        }
+        a{
+            color:darkorange;
+            font-size: 20px;
+            text-align:right;
+        }
+        a:hover{
+            color:peachpuff;
+        }
+
     </style>
 </head>
-<body>
+
 <script type="text/javascript">
     function formatTimeXX(t) {
         if (t < 10)
@@ -101,7 +118,7 @@
             // reset timer style to normal
             timer.className = "timer";
         }
-        else if (timeInSec == 5) { // WARNING: 5sec is for demo purposes!! TODO change it
+        else if (timeInSec == 3600) {
             // switch to the red flashing style
             timer.className = "timerRed";
         }
@@ -116,6 +133,7 @@
     }
 
     function toggleTable(button) {
+        alert(sessionStorage.myValue)
         let table = button.parentNode;
         let clock = table.dataset.clock;
 
@@ -147,6 +165,9 @@
         table.dataset.clock = clock;
     }
 </script>
+<dl>
+    <header><dt align="center">Maars Seating</dt><a href="menu.html"><dd>Go to Menu</dd></header></a>
+</dl>
 <ul class="tableMap" >
     <li>
         <div class="tableFree">

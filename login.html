@@ -40,9 +40,7 @@
 			background-color:lightgrey;
 			border-radius: 50%;
 		}
-		input [type="button"]{
-			margin:center;
-		}
+
 		
 		
 	</style>
@@ -65,15 +63,15 @@
  <script language="javascript">
  	function check(form)
  	{
- 		if(form.userid.value == "maars" && form.pswrd.value == "password")
- 	{
- 		alert("Correct Password and Username") /*window.open('target.html')*/
- 	}
- 	else
-    {
-      alert("Incorrect Password or Username")
-    }
-}
+ 		if (form.userid.value == "maars" && form.pswrd.value == "password")
+		{
+			window.open('table.html');
+		}
+		else
+		{
+			alert("Incorrect Password and Username");
+		}
+	}
  
  </script>
 </body>
