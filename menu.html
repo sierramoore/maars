@@ -417,7 +417,7 @@
     <table data-price="2">
         <td><img src="http://i.telegraph.co.uk/multimedia/archive/01434/prose6_1434575c.jpg" align="left"></td>
         <th><b>Raseberry Compote</b></th>
-        <td align="center">A refeshing slovic drink made with fresh naturally sweet raseberries.
+        <td align="center">A refeshing slovic drink made with fresh naturally sweet raseberries.</td>
         <td class="price"><u>Price:</u> <br/>$ 2</td>
         <td><input id="qty" type="numeric" min="0"/></td>
         <td><input type="submit" value="Add to cart"/></td>
@@ -460,6 +460,7 @@
     }
 
     function extractTableData(table) {
+        let name = "Test text";
         let price = parseFloat(table.dataset.price);
         let qty = parseInt(table.querySelector("#qty").value);
 
@@ -479,17 +480,14 @@
     function checkout() {
         let menuItems = document.querySelectorAll('table[data-price]');
         let dataItems = [];
-        let total = 0;
 
         for (let i = 0; i < menuItems.length; i++) {
             let data = extractTableData(menuItems[i]);
             if (data != null) {
                 dataItems.push(data);
-                total += data.price * data.qty;
             }
         }
 
-        alert("your total is " + total.toFixed(2));
         sessionStorage.cart = JSON.stringify(dataItems);
         window.open('checkout.html');
     }

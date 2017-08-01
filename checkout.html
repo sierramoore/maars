@@ -1,133 +1,194 @@
 <!Doctype html>
 <html>
 <head>
-  <link href="https://fonts.googleapis.com/css?family=Artifika" rel="stylesheet">
-<style type="text/css">
-  * {
-    font-family: 'Artifika', serif;
-  }
-body{
-  background-color: peachpuff;
-  color:MidnightBlue;
-  text-align: center;
-}
-input[type=submit]{
-  color:MidnightBlue;
-  padding:5px;
-  background-color:darkorange;
-  border-radius: 15%;
+    <link href="https://fonts.googleapis.com/css?family=Artifika" rel="stylesheet">
+    <style type="text/css">
+        * {
+            font-family: 'Artifika', serif;
+        }
 
-}
-input[type=submit]:hover {
-  background-color: lightgreen;
+        body {
+            background-color: peachpuff;
+            color: MidnightBlue;
+            text-align: center;
+        }
 
-}
+        input[type=submit] {
+            color: MidnightBlue;
+            padding: 5px;
+            background-color: darkorange;
+            border-radius: 15%;
 
-h1{
-  background-color:MidnightBlue;
-      border: solid blue;
-      padding:10px;
-      color:darkorange;
-      text-align: center;
-}
-  div{
-    margin: auto;
-    text-align:center;
-    width: 30%;
-    border: 3px solid MidnightBlue;
-    padding: 10px;
-  }
-#ta1{
-  color:black;
-  border-style: solid;
-  border-width: 1px;
-  margin:0 auto;
-  width: 80%;
-}
+        }
 
-th{
-  background-color:#FBC65D;
-  text-align:right;
-}
-  td{
-    text-align:right;
-  }
+        input[type=submit]:hover {
+            background-color: lightgreen;
+
+        }
+
+        h1 {
+            background-color: MidnightBlue;
+            border: solid blue;
+            padding: 10px;
+            color: darkorange;
+            text-align: center;
+        }
+
+        div {
+            margin: auto;
+            text-align: center;
+            width: 30%;
+            border: 3px solid MidnightBlue;
+            padding: 10px;
+        }
+
+        table {
+            color: black;
+            border-style: solid;
+            border-width: 1px;
+            margin: 0 auto;
+            width: 80%;
+        }
+
+        th {
+            background-color: #FBC65D;
+            text-align: right;
+        }
+
+        td {
+            text-align: right;
+        }
 
 
-</style>
+    </style>
 </head>
-<body>
+<body onload="displayCart();">
 
 <h1>Maars Checkout</h1>
-<h2>- Order Summary -</h2>
-<table id="ta1">
-  <tr>
-    <th>Product name</th>
-    <th>Qty</th>
-    <th>Price</th>
-  </tr>
-  <tr>
-<td>auto listed item</td>
-    <td>qty</td>
-    <td>$</td>
-    </tr>
-
+<h2>- Shopping Cart -</h2>
+<table id="cart">
     <tr>
-     <td></td><th>Tax: </th><td>(*.08)</td>
+        <th>Product name</th>
+        <th>Price</th>
+        <th>Qty</th>
     </tr>
-  <tr>
-    <td></td><th>Discount: </th><td>(-5 if over $50)</td>
-  </tr>
-  <tr>
-    <td></td><th>Tip: </th><td><form>
-    <input type="radio">0%
-    <input type="radio">15%
-    <input type="radio">18%
-    <input type="radio">20%
-  </form></td>
-  </tr>
-  <tr>
-    <td></td><th>Subtotal: </th><td>$$</td>
-  </tr>
-  </table>
+</table>
+
+<h2>- Order Total -</h2>
+<table>
+    <tr>
+        <td></td>
+        <th>Subtotal:</th>
+        <td id="order_sum">__</td>
+    </tr>
+    <tr>
+        <td></td>
+        <th>Tax:</th>
+        <td id="order_tax">(*.08)</td>
+    </tr>
+    <tr>
+        <td></td>
+        <th>Discount:</th>
+        <td>(-5 if over $50)</td>
+    </tr>
+    <tr>
+        <td></td>
+        <th>Tip:</th>
+        <td>
+            <form>
+                <input type="radio">0%
+                <input type="radio">15%
+                <input type="radio">18%
+                <input type="radio">20%
+            </form>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <th>Total:</th>
+        <td id="order_total">__</td>
+    </tr>
+</table>
 
 <h3>Credit Card Checkout</h3>
-
 <div>
-  <form>
-  <table cellpadding=5>
+    <form>
+        <table cellpadding=5>
 
-  <tr>
-  <td align=left><b>Name on Card:</b></td>
-  <td><input type=text placeholder="first and last name"></td>
-  </tr>
+            <tr>
+                <td align=left><b>Name on Card:</b></td>
+                <td><input type=text placeholder="first and last name"></td>
+            </tr>
 
-  <tr>
-  <td align=left><b>Card number:</b></td>
-  <td><input type=integer placeholder="xxxx-xxxx-xxxx-xxxx" min="16" max="16"></td>
-  </tr>
-   <tr>
-  <td align="left"><b>CVC:</b></td>
-  <td><input type=integer  placeholder="xxx" size=4></td>
-  </tr>
-  </table>
+            <tr>
+                <td align=left><b>Card number:</b></td>
+                <td><input type=integer placeholder="xxxx-xxxx-xxxx-xxxx" min="16" max="16"></td>
+            </tr>
+            <tr>
+                <td align="left"><b>CVC:</b></td>
+                <td><input type=integer placeholder="xxx" size=4></td>
+            </tr>
+        </table>
 
-  <table cellpadding=5>
-  <tr>
-    <td align=left><b>Expiration date:</b></td><td><input type=month size=2></td>
-  </tr>
+        <table cellpadding=5>
+            <tr>
+                <td align=left><b>Expiration date:</b></td>
+                <td><input type=month size=2></td>
+            </tr>
 
-  </table>
-<br>
-  <input type=submit value="Confirm Payment" align="center">
+        </table>
+        <br>
+        <input type=submit value="Confirm Payment" align="center">
 
-  </form>
+    </form>
 
 </div>
 
 <script language="JavaScript">
+    function displaySummary(total, sum, tax) {
+        document.getElementById("order_sum").innerHTML = sum.toFixed(2);
+        document.getElementById("order_tax").innerHTML = tax.toFixed(2);
+        document.getElementById("order_total").innerHTML = total.toFixed(2);
+    }
 
+    function displayCartItems(items) {
+        let table = document.getElementById("cart");
+
+        for (let i = 0; i < items.length; ++i) {
+            let item = items[i];
+            let row = document.createElement('tr');
+
+            let tdName = document.createElement('td');
+            row.appendChild(tdName);
+            tdName.innerHTML = item.name;
+
+            let tdPrice = document.createElement('td');
+            row.appendChild(tdPrice);
+            tdPrice.innerHTML = item.price;
+
+            let tdQty = document.createElement('td');
+            row.appendChild(tdQty);
+            tdQty.innerHTML = item.qty;
+
+            table.appendChild(row);
+        }
+    }
+
+    function displayCart() {
+        let sum = 0;
+
+        let items = JSON.parse(sessionStorage.cart);
+        for (let i = 0; i < items.length; ++i) {
+            let item = items[i];
+            sum += item.price * item.qty;
+        }
+
+        let tax = 0.08 * sum;
+        let total = sum + tax;
+        displaySummary(total, sum, tax);
+        displayCartItems(items);
+    }
 </script>
 </body>
-  </html>
+</html>
 
