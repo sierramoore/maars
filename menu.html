@@ -154,7 +154,7 @@
         li {
             text-align: center;
             border-bottom: 1px solid #555;
-            background-color: #C3F3BE;
+            background-color: #F3F4D6;
         }
         li:last-child {
             border-bottom: none;
@@ -164,7 +164,7 @@
             color: white;
         }
         li a:hover:not(.active) {
-            background-color: lightgreen;
+            background-color: #BF5C5C;
             color: white;
         }
     </style>
@@ -228,7 +228,7 @@
 </div>
 
 <table>
-    <th align="center">- Appetizers-</th>
+    <th align="center" id="Appetizers">- Appetizers-</th>
     <table data-price="10">
         <td id="testid"><img src="http://cdn2.koreanbapsang.com/wp-content/uploads/2010/02/Bibimbap.jpg" align="left">
         <td>
@@ -270,7 +270,7 @@
 </table>
 
 <table>
-    <th id="#MainCourse" align="center">- Main Course -</th>
+    <th id="MainCourse" align="center">- Main Course -</th>
 
     <table  data-price="10">
         <td><img src="http://i.pinimg.com/736x/cf/dc/03/cfdc035c6e280ea69e2fc5e9389e4a61.jpg" align="left">
@@ -358,7 +358,7 @@
 </table>
 
 <table>
-    <th align="center">- Drinks -</th>
+    <th align="center" id="Drinks">- Drinks -</th>
     <table data-price="2">
         <td><img
                 src="https://images.kitchenstories.de/recipeImages/RP03_23_09_MangoLassi_TitlePicture/RP03_23_09_MangoLassi_TitlePicture-medium-landscape-200.jpg"
@@ -400,9 +400,51 @@
         <td><input id="qty" type="numeric" min="0"/></td>
         <td><input type="submit" value="Add to cart"/></td>
     </table>
-</table>
-<!--</table><footer><a href="checkout.html"><button type="submit">Checkout</button></a></footer>-->
-<footer>
+    <table>
+        <th align="center" id="Dessert">- Desserts -</th>
+        <table data-price="2">
+            <td><img src="http://farm4.static.flickr.com/3335/4596202064_49a2bf75a5_o.jpg" align="left">
+            </td>
+            <th><b>Coconut Ice Cream</b></th>
+            <td align="center">Signature ice cream flavor of Trinidad and Tobago.</td>
+            <td class="price"><u>Price:</u> <br/>$ 2</td>
+            <td><input id="qty" type="number" min="0"/></td>
+            <td><input type="submit" value="Add to cart"/></td>
+        </table>
+        <table data-price="2">
+            <td><img
+                    src="http://s.eatthis-cdn.com/media/images/ext/711645580/salty-restaurant-desserts-tripchocmeltdown.jpg"
+                    align="left"></td>
+            <th><b>Chocolate Lava Cake </b></th>
+            <td align="center"> Chocolate goodness that melts in your mouth, with delicious homemade vanilla ice cream
+                on the side.
+            </td>
+            <td class="price"><u>Price:</u> <br/>$ 2</td>
+            <td><input id="qty" type="number" min="0"/></td>
+            <td><input type="submit" value="Add to cart"/></td>
+        </table>
+
+        <table data-price="2">
+            <td><img src="http://media.indiatimes.in/media/content/2015/Jul/des2_1436344824.jpg" align="left"></td>
+            <th><b>Nutella Crepes</b></th>
+            <td align="center">Warm creamy Nutella. Fresh Fruit. Need we say more?</td>
+            <td class="price"><u>Price:</u> <br/>$ 2</td>
+            <td><input id="qty" type="number" min="0"/></td>
+            <td><input type="submit" value="Add to cart"/></td>
+        </table>
+
+        <table data-price="2">
+            <td><img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTK_VVrVRfjGjpiW1KE01RMqaN0HNFTSEdj9dv4LB5Yu6rd5DWu"
+                    align="left"></td>
+            <th><b>Chocolate Covered Strawberries</b></th>
+            <td align="center">A dessert classic - you can't go wrong with this time-tested favorite.</td>
+            <td class="price"><u>Price:</u><br/>$ 2</td>
+            <td><input id="qty" type="number" min="0"/></td>
+            <td><input type="submit" value="Add to cart"/></td>
+        </table>
+    </table>
+    <footer>
     <button onclick="checkout()" type="submit">Checkout</button>
 </footer>
 <script language="javascript">
