@@ -127,11 +127,11 @@
 
             <tr>
                 <td align=left><b>Card number:</b></td>
-                <td><input type=integer placeholder="xxxx-xxxx-xxxx-xxxx" min="16" max="16"></td>
+                <td><input type=integer placeholder="xxxx-xxxx-xxxx-xxxx" min="16" max="16" pattern=[1-9]{16}></td>
             </tr>
             <tr>
                 <td align="left"><b>CVC:</b></td>
-                <td><input type=integer placeholder="xxx" size=4></td>
+                <td><input type=integer placeholder="xxx" size=4  min="3" max="3" pattern=[1-9]{3}></td>
             </tr>
         </table>
 
