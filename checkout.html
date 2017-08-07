@@ -88,23 +88,23 @@
     </tr>
     <tr>
         <td></td>
-        <th>Tax:</th>
-        <td id="order_tax">(*.08)</td>
+        <th>Discount:</th>
+        <td>(-5 if over $50)</td>
     </tr>
     <tr>
         <td></td>
-        <th>Discount:</th>
-        <td>(-5 if over $50)</td>
+        <th>Tax:</th>
+        <td id="order_tax">(8.875%)</td>
     </tr>
     <tr>
         <td></td>
         <th>Tip:</th>
         <td>
             <form>
-                <input type="radio">0%
-                <input type="radio">15%
-                <input type="radio">18%
-                <input type="radio">20%
+                <input type="radio" name="percent" id="r1" onclick="check()">0%
+                <input type="radio" name="percent" id="r2" onclick="check()">15%
+                <input type="radio" name="percent" id="r3" onclick="check()">18%
+                <input type="radio" name="percent" id="r4" onclick="check()">20%
             </form>
         </td>
     </tr>
@@ -117,9 +117,7 @@
 
 <h3>Credit Card Checkout</h3>
 <div>
-    <form>
-        <table cellpadding=5>
-
+        <table>
             <tr>
                 <td align=left><b>Name on Card:</b></td>
                 <td><input type=text placeholder="first and last name"></td>
@@ -130,7 +128,7 @@
                 <td><input type=integer placeholder="xxxx-xxxx-xxxx-xxxx" min="16" max="16" pattern=[1-9]{16}></td>
             </tr>
             <tr>
-                <td align="left"><b>CVC:</b></td>
+                <td align="left"><b>CVV:</b></td>
                 <td><input type=integer placeholder="xxx" size=4  min="3" max="3" pattern=[1-9]{3}></td>
             </tr>
         </table>
@@ -145,9 +143,29 @@
         <br>
         <input type=submit value="Confirm Payment" align="center">
 
-    </form>
-
 </div>
+
+<h3>Cash Checkout</h3>
+<div>
+        <table>
+
+            <tr>
+                <td><b>Cash amount:</b></td>
+                <td><input id="cashAmount"></td>
+            </tr>
+
+            <tr>
+                <td><b>Order amount:</b></td>
+                <td><input id="orderAmount"></td>
+            <tr>
+            <td><input onclick="subtractCash()" type=submit value="Subtract"></input></td>
+            </tr>
+            <tr>
+                <td><b>Remainder:</b></td><td id="rest"></td>
+            </tr>
+        </table>
+</div>
+
 
 <script language="JavaScript">
     function displaySummary(total, sum, tax) {
@@ -188,18 +206,25 @@
 
     function displayCart() {
         let sum = 0;
-
         let items = JSON.parse(sessionStorage.cart);
         for (let i = 0; i < items.length; ++i) {
             let item = items[i];
             sum += item.price * item.qty;
         }
 
-        let tax = 0.08 * sum;
+        let tax = 0.08875 * sum;
         let total = sum + tax;
         displaySummary(total, sum, tax);
         displayCartItems(items);
     }
+
+    function subtractCash() {
+        let x = document.getElementById('cashAmount').value;
+        let y = document.getElementById('orderAmount').value;
+        let remainder = parseFloat(x) - parseFloat(y);
+        document.getElementById('rest').innerHTML = remainder;
+    }
+
 </script>
 </body>
 </html>
