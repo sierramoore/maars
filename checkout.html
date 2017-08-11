@@ -94,7 +94,7 @@
     <tr>
         <td></td>
         <th>Subtotal:</th>
-        <td id="order_sum">__</td>
+        <td id="order_subtotal">__</td>
     </tr>
     <tr>
         <td></td>
@@ -111,10 +111,10 @@
         <th>Tip:</th>
         <td>
             <form>
-                <input type="radio" name="percent" id="r1" onclick="check()">0%
-                <input type="radio" name="percent" id="r2" onclick="check()">15%
-                <input type="radio" name="percent" id="r3" onclick="check()">18%
-                <input type="radio" name="percent" id="r4" onclick="check()">20%
+                <input type="radio" name="percent" id="notip" onchange="displayCart()">0%
+                <input type="radio" name="percent" id="fifteentip" onchange="displayCart()">15%
+                <input type="radio" name="percent" id="eighteentip" onchange="displayCart()">18%
+                <input type="radio" name="percent" id="twentytip" onchange="displayCart()">20%
             </form>
         </td>
     </tr>
@@ -151,7 +151,7 @@
 
         </table>
         <br>
-        <input type=submit value="Confirm Payment" align="center">
+        <input type=submit value="Confirm Payment" align="center" onclick="confirm()">
 
 </div>
 
@@ -178,10 +178,12 @@
 
 
 <script language="JavaScript">
+
     function displaySummary(total, sum, tax) {
-        document.getElementById("order_sum").innerHTML = sum.toFixed(2);
+        document.getElementById("order_subtotal").innerHTML = sum.toFixed(2);
         document.getElementById("order_tax").innerHTML = tax.toFixed(2);
         document.getElementById("order_total").innerHTML = total.toFixed(2);
+
     }
 
     function displayCartItems(items) {
@@ -215,25 +217,60 @@
     }
 
     function displayCart() {
-        let sum = 0;
+        let subtotal = 0;
         let items = JSON.parse(sessionStorage.cart);
         for (let i = 0; i < items.length; ++i) {
             let item = items[i];
-            sum += item.price * item.qty;
+            subtotal += item.price * item.qty;
         }
 
-        let tax = 0.08875 * sum;
-        let total = sum + tax;
-        displaySummary(total, sum, tax);
+        let discountedSubtotal = discount(subtotal);
+        let tax = 0.08875 * discountedSubtotal;
+        let total = discountedSubtotal + tax + calculateTip(discountedSubtotal);
+        displaySummary(total, subtotal, tax);
         displayCartItems(items);
     }
+
+    function discount(sum) {
+        if (sum >= 50) {
+            sum -= 5;
+        }
+        return sum;
+    }
+
+    function calculateTip(discountedSubtotal) {
+
+        return total * getTipPercent();
+    }
+
+    function getTipPercent() {
+        if () {
+            document.getElementById("fifteenTip").onChange = calculateTip(discountedSubtotal);
+            return 1.15;
+        }
+        else if () {
+            document.getElementById("eighteentip").onclick = calculateTip(discountedSubtotal);
+            return 1.18 * total;
+        }
+        else if () {
+            document.getElementById("twentytip").onclick = calculateTip(discountedSubtotal);
+            return 1.2 * total;
+        }
+        return total;
+    }
+
 
     function subtractCash() {
         let x = document.getElementById('cashAmount').value;
         let y = document.getElementById('orderAmount').value;
-        let remainder = parseFloat(x) - parseFloat(y);
+        let remainder = Number(x).toFixed(2) - Number(y).toFixed(2);
         document.getElementById('rest').innerHTML = remainder;
     }
+
+    function confirm() {
+        alert("Payment sucsess");
+    }
+
 
 </script>
 </body>

@@ -13,13 +13,13 @@ checkout.html - lists items, prices, quantity, credit card or cash options
 html-
 Simple input fields for username and password inside a form tag.
 js-
-function checks the name attribute for the its specified value of username "maars" and password "password" if both statements are true then onclick of the login button it will direct you to the table page if not a window alert will open "Incorrect Password and Username"
+function checks the name attribute for the specified value of username "maars" and password "password" if both statements are true then on click of the login button it will direct you to the table page, if not then a window alert will say "Incorrect Password and Username"
 
 # Table
 html-
 Used a <header> to style and display Maars Seating bar across screen. The <dl> (decriptive list) to place the link in the <dd> (decriptive data) one level down and place in right corner.
-Placed tables in <li> list tags to appear side by side and used <div> to specify a class for styles, images and size.
-The onclick attribute toggles the table image from empty table picture to occupied table image.
+Placed tables in <li> list tags to appear side by side.
+The inputs onclick attribute toggles the table image from empty table picture to occupied table image.
 
 js- (let are local var in js)
 function formatTimeXX(t) says if the time is less than 10 seconds display and extra 0 to look like 00:00 instead of 0:0
