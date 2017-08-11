@@ -178,7 +178,6 @@
 
 
 <script language="JavaScript">
-
     function displaySummary(total, sum, tax) {
         document.getElementById("order_subtotal").innerHTML = sum.toFixed(2);
         document.getElementById("order_tax").innerHTML = tax.toFixed(2);
@@ -223,7 +222,6 @@
             let item = items[i];
             subtotal += item.price * item.qty;
         }
-
         let discountedSubtotal = discount(subtotal);
         let tax = 0.08875 * discountedSubtotal;
         let total = discountedSubtotal + tax + calculateTip(discountedSubtotal);
@@ -238,13 +236,14 @@
         return sum;
     }
 
-    function calculateTip(discountedSubtotal) {
+    function calculateTip(total) {
 
         return total * getTipPercent();
     }
 
     function getTipPercent() {
-        if () {
+        return 0;
+        /*if () {
             document.getElementById("fifteenTip").onChange = calculateTip(discountedSubtotal);
             return 1.15;
         }
@@ -256,7 +255,7 @@
             document.getElementById("twentytip").onclick = calculateTip(discountedSubtotal);
             return 1.2 * total;
         }
-        return total;
+        return total;*/
     }
 
 
