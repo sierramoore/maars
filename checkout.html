@@ -18,11 +18,12 @@
             padding: 5px;
             background-color: darkorange;
             border-radius: 15%;
+            display: inline;
 
         }
 
         input[type=submit]:hover {
-            background-color: lightgreen;
+            background-color: #FBC65D;
 
         }
 
@@ -50,6 +51,9 @@
             border: 3px solid MidnightBlue;
             padding: 10px;
         }
+        div-table{
+            border: 0px;
+        }
 
         table {
             color: black;
@@ -72,6 +76,13 @@
             height: 100px;
             width: 100px;
             display: block;
+        }
+        .checkout{
+            color: MidnightBlue;
+            padding: 5px;
+            background-color: darkorange;
+            border-radius: 15%;
+            display: inline;
         }
     </style>
 </head>
@@ -99,7 +110,7 @@
     <tr>
         <td></td>
         <th>Discount:</th>
-        <td>(-5 if over $50)</td>
+        <td id="order_discountedSubtotal">(-5 if over $50)</td>
     </tr>
     <tr>
         <td></td>
@@ -111,10 +122,10 @@
         <th>Tip:</th>
         <td>
             <form>
-                <input type="radio" name="percent" id="notip" onchange="displayCart()">0%
-                <input type="radio" name="percent" id="fifteentip" onchange="displayCart()">15%
-                <input type="radio" name="percent" id="eighteentip" onchange="displayCart()">18%
-                <input type="radio" name="percent" id="twentytip" onchange="displayCart()">20%
+                <input type="radio" name="percent" id="notip" onclick="updateSummary()">0%
+                <input type="radio" name="percent" id="fifteentip" onclick="updateSummary()">15%
+                <input type="radio" name="percent" id="eighteentip" onclick="updateSummary()">18%
+                <input type="radio" name="percent" id="twentytip" onclick="updateSummary()">20%
             </form>
         </td>
     </tr>
@@ -125,64 +136,68 @@
     </tr>
 </table>
 
-   <h3>Credit Card Checkout</h3>
+<h3>Credit Card Checkout</h3>
 <div>
-        <table>
-            <tr>
-                <td align=left><b>Name on Card:</b></td>
-                <td><input type=text placeholder="first and last name"></td>
-            </tr>
+    <table>
+        <tr>
+            <td align=left><b>Name on Card:</b></td>
+            <td><input type=text placeholder="first and last name"></td>
+        </tr>
 
-            <tr>
-                <td align=left><b>Card number:</b></td>
-                <td><input type=integer placeholder="xxxx-xxxx-xxxx-xxxx" min="16" max="16" pattern=[1-9]{16}></td>
-            </tr>
-            <tr>
-                <td align="left"><b>CVV:</b></td>
-                <td><input type=integer placeholder="xxx" size=4  min="3" max="3" pattern=[1-9]{3}></td>
-            </tr>
-        </table>
+        <tr>
+            <td align=left><b>Card number:</b></td>
+            <td><input placeholder="1111-2222-3333-4444" min="16" max="16" pattern="[1-9]{16}"
+                       onkeypress='return numberFilter(event)'></td>
+        </tr>
+        <tr>
+            <td align="left"><b>CVV:</b></td>
+            <td><input placeholder="123" size=4 min="3" max="3" pattern="[1-9]{3}"
+                       onkeypress='return numberFilter(event)'></td>
+        </tr>
+    </table>
 
-        <table cellpadding=5>
-            <tr>
-                <td align=left><b>Expiration date:</b></td>
-                <td><input type=month size=2></td>
-            </tr>
+    <table cellpadding=5>
+        <tr>
+            <td align=left><b>Expiration date:</b></td>
+            <td><input type=month size=2></td>
+        </tr>
 
-        </table>
-        <br>
-        <input type=submit value="Confirm Payment" align="center" onclick="confirm()">
+    </table>
+    <br>
+    <input type=submit value="Confirm Payment" align="center" onclick="confirm()">
 
 </div>
 
 <h3>Cash Checkout</h3>
 <div>
-        <table>
+    <table>
 
-            <tr>
-                <td><b>Cash amount:</b></td>
-                <td><input id="cashAmount"></td>
-            </tr>
+        <tr>
+            <td><b>Cash amount:</b></td>
+            <td><input id="cashAmount" onkeypress='return moneyFilter(event)' oninput="subtractCash()"></td>
+        </tr>
 
-            <tr>
-                <td><b>Order amount:</b></td>
-                <td><input id="orderAmount"></td>
-            <tr>
-            <td><input onclick="subtractCash()" type=submit value="Subtract"></input></td>
-            </tr>
-            <tr>
-                <td><b>Remainder:</b></td><td id="rest"></td>
-            </tr>
-        </table>
+        <tr>
+            <td><b>Order amount:</b></td>
+            <td id="cash_order_total"></td>
+        <tr>
+            <td><b>Remainder:</b></td>
+            <td id="rest"></td>
+        </tr>
+    </table>
+    <br>
+    <input onclick="confirmCashPayment()" type=submit value="Confirm Payment">
 </div>
 
 
 <script language="JavaScript">
-    function displaySummary(total, sum, tax) {
-        document.getElementById("order_subtotal").innerHTML = sum.toFixed(2);
+    function displaySummary(subtotal, discountedSubtotal, tax, total) {
+        document.getElementById("order_subtotal").innerHTML = subtotal.toFixed(2);
         document.getElementById("order_tax").innerHTML = tax.toFixed(2);
         document.getElementById("order_total").innerHTML = total.toFixed(2);
+        document.getElementById("cash_order_total").innerHTML = total.toFixed(2);
 
+        //document.getElementById("order_discountedSubtotal").innerHTML = discountedSubtotal.toFixed(2);
     }
 
     function displayCartItems(items) {
@@ -216,6 +231,11 @@
     }
 
     function displayCart() {
+        let cartItems = updateSummary();
+        displayCartItems(cartItems);
+    }
+
+    function updateSummary() {
         let subtotal = 0;
         let items = JSON.parse(sessionStorage.cart);
         for (let i = 0; i < items.length; ++i) {
@@ -224,9 +244,10 @@
         }
         let discountedSubtotal = discount(subtotal);
         let tax = 0.08875 * discountedSubtotal;
-        let total = discountedSubtotal + tax + calculateTip(discountedSubtotal);
-        displaySummary(total, subtotal, tax);
-        displayCartItems(items);
+        let total = discountedSubtotal + tax + calculateTip(discountedSubtotal + tax);
+
+        displaySummary(subtotal, discountedSubtotal, tax, total);
+        return items;
     }
 
     function discount(sum) {
@@ -242,34 +263,52 @@
     }
 
     function getTipPercent() {
-        return 0;
-        /*if () {
-            document.getElementById("fifteenTip").onChange = calculateTip(discountedSubtotal);
-            return 1.15;
+        if (document.getElementById("fifteentip").checked) {
+            return .15;
         }
-        else if () {
-            document.getElementById("eighteentip").onclick = calculateTip(discountedSubtotal);
-            return 1.18 * total;
+        else if (document.getElementById("eighteentip").checked) {
+            return .18;
         }
-        else if () {
-            document.getElementById("twentytip").onclick = calculateTip(discountedSubtotal);
-            return 1.2 * total;
+        else if (document.getElementById("twentytip").checked) {
+            return .2;
         }
-        return total;*/
+        else {
+            return 0;
+        }
     }
-
 
     function subtractCash() {
         let x = document.getElementById('cashAmount').value;
-        let y = document.getElementById('orderAmount').value;
-        let remainder = Number(x).toFixed(2) - Number(y).toFixed(2);
-        document.getElementById('rest').innerHTML = remainder;
+        let y = document.getElementById('cash_order_total').innerHTML;
+        x = parseFloat(x);
+        y = parseFloat(y);
+        if (isNaN(x)) {
+            x = 0;
+        }
+        let remainder = x - y;
+        document.getElementById('rest').innerHTML = remainder.toFixed(2);
+    }
+
+    function numberFilter(event){
+        return event.charCode >= 48 && event.charCode <= 57; //if the number is between 0 and 9 true. So letters won't work.
+    }
+
+    function moneyFilter(event){
+        return numberFilter(event) || (event.charCode == 46); //if the number is between 0 and 9 and return true.
     }
 
     function confirm() {
-        alert("Payment sucsess");
+        alert("Payment success");
     }
-
+    function confirmCashPayment() {
+        let remainder = parseFloat(document.getElementById('rest').innerHTML);
+        if (remainder >= 0) {
+            alert("Cash payment success");
+        }
+        else {
+            alert("Insufficent funds");
+        }
+    }
 
 </script>
 </body>
