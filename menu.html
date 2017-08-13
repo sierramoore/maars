@@ -42,22 +42,6 @@
             font-size: 20px;
             display: inline-block;
         }
-        img {
-            height: 150px;
-            width: 150px;
-            display: block;
-        }
-        table {
-            width: 930px;
-            margin: auto;
-            border: 1px solid silver;
-            background: #FEF5EE;
-            font-family: 'Lobster', cursive;
-        }
-        th {
-            color: MidnightBlue;
-            font-family: 'Bree Serif', serif;
-        }
         td {
             color: #BF5C5C;
         }
@@ -96,8 +80,11 @@
             height: 400px;
             position: relative;
         }
-
-        .text {
+        .side-nav {
+            position: fixed;
+            margin-left: 30px;
+        }
+        .slide-text {
             color: darkorange;
             font-size: 15px;
             padding: 8px 12px;
@@ -105,10 +92,6 @@
             bottom: 15px;
             width: 100%;
             text-align: center;
-        }
-        .side-nav {
-            position: fixed;
-            margin-left: 30px;
         }
         #page-wrap{
             margin: 25px auto;
@@ -145,266 +128,106 @@
             background-color: #F3F4D6;
             color: MidnightBlue;
         }
-        .title{
+        .menuSectionTitle{
+            padding-top: 35px;
+        }
+        .menuItemTitle{
             color: MidnightBlue;
             font-size: 20px;
         }
-        h1{
-            padding-top: 35px;
+        .menuItemImage {
+            height: 150px;
+            width: 150px;
+            display: block;
+        }
+        .menuTable {
+            width: 930px;
+            margin: auto;
+            border: 1px solid silver;
+            border-collapse: collapse;
+            background: #FEF5EE;
+            font-family: 'Lobster', cursive;
+        }
+        .menuTableRow {
+            border: 1px solid silver;
         }
     </style>
 </head>
-<body>
+<body onload='updateMenu(); showSlides();'>
 <dl>
     <header>
         <dt>Maars Menu</dt>
-        <a href="table.html">
-            <dd>Go to Seating</dd></header>
-    </a>
+        <a href="table.html"> <dd>Go to Seating</dd> </a>
+    </header>
 </dl>
 
 <div class="side-nav">
-    <ul>
-        <li><a href="#Appetizers">Appetizers</a></li>
-        <li><a href="#MainCourse">Main Course</a></li>
-        <li><a href="#Dessert">Dessert</a></li>
-        <li><a href="#Drinks">Drinks</a></li>
+    <ul id="nav_menu">
+        <!-- WARNING: dynamically populated when page is loaded-->
     </ul>
 </div>
+<div id='slideshow' class="slideshow-container">
+    <!-- WARNING: dynamically populated when page is loaded-->
+</div>
+<br>
+<div id='slideshow_dots' style="text-align:center">
+    <!-- WARNING: dynamically populated when page is loaded-->
+</div>
+<div id="menu_list">
+    <!-- WARNING: dynamically populated when page is loaded-->
+</div>
 
-    <div class="slideshow-container">
-        <div class="mySlides fade">
-
-            <img src="http://i.pinimg.com/736x/cf/dc/03/cfdc035c6e280ea69e2fc5e9389e4a61.jpg" class="slideshowimg">
-            <div class="text">The MARTIN LUTHER KING</div>
-        </div>
-
-        <div class="mySlides fade">
-            <img src="https://i.pinimg.com/736x/02/e6/42/02e6421751a5747ead364dc3c9faf19d--dutch-food-healthy-weight.jpg"
-                 class="slideshowimg">
-            <div class="text">Egg Roll Up</div>
-        </div>
-
-        <div class="mySlides fade">
-            <img src="https://bebrainfit.com/wp-content/uploads/2017/01/yerba-mate-tea-720x480.jpg" class="slideshowimg">
-            <div class="text">Yerba Mate</div>
-        </div>
-        
-        <div class="mySlides fade">
-            <img src="http://whatisthaifood.com/wp-content/uploads/2012/12/thai_food.jpg" class="slideshowimg">
-            <div class="text">Mixed Sea Food</div>
-        </div>
-        <div class="mySlides fade">
-            <img src="http://www.dosomethingnew.com/content/images/JamiesItalian_Food6.jpg" class="slideshowimg">
-            <div class="text">Classic Pasta</div>
-            
-        </div>
-        <a class="prev" onclick="plusSlides(-1)"></a>
-        <a class="next" onclick="plusSlides(1)"></a>
-    </div>
-    <br>
-    <div style="text-align:center">
-        <span class="dot" onclick="currentSlide(1)"></span>
-        <span class="dot" onclick="currentSlide(2)"></span>
-        <span class="dot" onclick="currentSlide(3)"></span>
-        <span class="dot" onclick="currentSlide(4)"></span>
-        <span class="dot" onclick="currentSlide(5)"></span>
-    </div>
-
-
-
-    <h1 align="center" id="Appetizers">- Appetizers-</h1>
-
-    <table  data-price="10">
-        <td><img src="http://divascancook.com/wp-content/uploads/2011/11/IMG_22021.jpg"></td>
-        <td width="60%"><p class="title">Candy Yams.........................................$10</p>
-            Sweet potatoes with a dash of our finest cinnamon.</d>
-        <td width="17%">Qty:<br/><input id="qty" type="number" min="0"/></td>
-    </table>
-
-    <table  data-price="10">
-        <td><img src="http://tailgategrilling.com/wp-content/uploads/2013/03/Grilled-Chicken-with-Root-Beer-Barbecue-Sauce.jpg"></td>
-        <td width="60%"><p class="title">BBQ Chicken.........................................$10</p>
-            Perfect wings smothered in sauce.</td>
-        <td width="17%">Qty:<br/><input id="qty" type="number" min="0"/></td>
-    </table>
-
-    <table data-price="10">
-        <td><img src="https://i.ytimg.com/vi/Y-Y9CXGRJPU/maxresdefault.jpg"></td>
-        <td width="60%"><p class="title">Gimbap/Kimbap.........................................$10</p>
-            Rice, meat, and vegetables are wrapped in a long seaweed roll.</td>
-        <td width="17%">Qty:<br/><input id="qty" type="number" min="0"/></td>
-    </table>
-
-    <table data-price="10">
-        <td><img src="http://english.chosun.com/site/data/img_dir/2017/02/08/2017020801389_0.jpg"></td>
-        <td width="60%"><p class="title">Ogok-bap.........................................$10</p>
-            Rice mixed with multiple grains like black beans and foxtail millets.</td>
-        <td width="17%">Qty:<br/><input id="qty" type="number" min="0"/></td>
-    </table>
-
-    <h1 id="MainCourse" align="center">- Main Course -</h1>
-
-    <table  data-price="10">
-        <td><img src="http://i.pinimg.com/736x/cf/dc/03/cfdc035c6e280ea69e2fc5e9389e4a61.jpg"></td>
-        <td width="60%"><p class="title">The Martin Luther King.........................................$10</p>
-        Two glazed donuts, surrounding a bacon cheese burger with chopped fried onions.</td>
-        <td width="17%">Qty:<br/><input id="qty" type="number" min="0"/></td>
-    </table>
-
-    <table  data-price="10">
-        <td><img src="http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2014/8/1/1406931617815/Fish-and-chips-014.jpg"></td>
-        <td width="60%"><p class="title">Fish & Chips.........................................$10</p>
-            Fresh Fish, fried Chips, ketchup or tartar to dip.</td>
-        <td width="17%">Qty:<br/><input id="qty" type="number" min="0"/></td>
-    </table>
-
-    <table  data-price="9">
-        <td><img src="https://s-media-cache-ak0.pinimg.com/originals/d6/9a/32/d69a32c8fca1e012b329e3570ee8d3c2.jpg"></td>
-        <td width="60%"><p class="title">Half-half Pizza.........................................$9</p>
-        Mushroom, broccoli, chicken chunks, and tomato mixed with cheese 10 inch pie.</td>
-        <td width="17%">Qty:<br/><input id="qty" type="number" min="0"/></td>
-    </table>
-    <table  data-price="7">
-        <td><img src="http://www.dosomethingnew.com/content/images/JamiesItalian_Food6.jpg"></td>
-        <td width="60%"><p class="title">Classic Pasta.........................................$7</p>
-        Pasta mixed with tomatoes and shredded onion at the top</td>
-        <td width="17%">Qty:<br/><input id="qty" type="number" min="0"/></td>
-    </table>
-
-    <table data-price="10">
-        <td><img src="http://cdn2.koreanbapsang.com/wp-content/uploads/2010/02/Bibimbap.jpg"></td>
-        <td width="60%"><p class="title">Bibimbap.........................................$10</p>
-            An elegantly laid out dish with rice and an egg yolk in its center surrounded by
-            multiple vegetables and meat.</td>
-        <td width="17%">Qty:<br/><input id="qty" type="number" min="0"/></td>
-    </table>
-
-    <table  data-price="15">
-        <td><img src="http://whatisthaifood.com/wp-content/uploads/2012/12/thai_food.jpg"></td>
-        <td width="60%"><p class="title">Mixed Sea Food.........................................$15</p>
-        Different varieties od sea weed boiled with added spices.</td>
-        <td width="17%">Qty:<br/><input id="qty" type="number" min="0"/></td>
-    </table>
-
-    <table data-price="10">
-        <td><img src="https://www.maangchi.com/wp-content/uploads/2007/10/samgyetang11.jpg">
-        <td>
-        <td width="60%"><p class="title">Samggye-tang.........................................$10</p>
-            A young chicken is stuffed with sticky rice, ginseng, gingko nuts and dried jujube.</td>
-        <td width="17%">Qty<br/><input id="qty" type="number" min="0"/></td>
-    </table>
-
-</table>
-
-<h1 align="center" id="Dessert">- Desserts -</h1>
-
-<table  data-price="10">
-    <td><img src="https://i.pinimg.com/736x/02/e6/42/02e6421751a5747ead364dc3c9faf19d--dutch-food-healthy-weight.jpg"></td>
-    <td width="60%"><p class="title">Egg Roll Plate.........................................$10</p>
-        It comes with the fried egg rolled inside a bread mixed with sauces and decorated with some
-        strawberries.</td>
-    <td width="17%">Qty:<br/><input id="qty" type="number" min="0"/></td>
-</table>
-
-<table data-price="2">
-    <td><img src="http://farm4.static.flickr.com/3335/4596202064_49a2bf75a5_o.jpg"></td>
-    <td width="60%"><p class="title">Coconut Ice Cream.........................................$2</p>
-        Signature ice cream flavor of Trinidad and Tobago.</td>
-    <td width="17%">Qty:<br/><input id="qty" type="number" min="0"/></td>
-</table>
-<table data-price="2">
-    <td><img src="http://s.eatthis-cdn.com/media/images/ext/711645580/salty-restaurant-desserts-tripchocmeltdown.jpg"></td>
-    <td width="60%"><p class="title">Chocolate Lava Cake.........................................$2</p>
-        Chocolate goodness that melts in your mouth, with delicious homemade vanilla ice cream
-        on the side.</td>
-    <td width="17%">Qty:<br/><input id="qty" type="number" min="0"/></td>
-</table>
-
-<table data-price="2">
-    <td><img src="http://media.indiatimes.in/media/content/2015/Jul/des2_1436344824.jpg" align="left"></td>
-    <td width="60%"><p class="title">Nutella Crepes.........................................$2</p>
-        Warm creamy Nutella. Fresh Fruit. Need we say more?</td>
-    <td width="17%">Qty:<br/><input id="qty" type="number" min="0"/></td>
-</table>
-
-<table data-price="2">
-    <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTK_VVrVRfjGjpiW1KE01RMqaN0HNFTSEdj9dv4LB5Yu6rd5DWu"></td>
-    <td width="60%"><p class="title">Chocolate Covered Strawberries.........................................$2</p>
-        A dessert classic - you can't go wrong with this time-tested favorite.</td>
-    <td width="17%">Qty:<br/><input id="qty" type="number" min="0"/></td>
-</table>
-
-    <h1 align="center" id="Drinks">- Drinks -</h1>
-
-    <table data-price="2">
-        <td><img src="https://images.kitchenstories.de/recipeImages/RP03_23_09_MangoLassi_TitlePicture/RP03_23_09_MangoLassi_TitlePicture-medium-landscape-200.jpg"></td>
-        <td width="60%"><p class="title">Mango Lassi.........................................$2</p>
-        A delicious martian drink made from mangos and yogurt.</td>
-        <td width="17%">Qty:<br/><input id="qty" type="number" min="0"/></td>
-    </table>
-    <table data-price="2">
-        <td><img src="https://s-media-cache-ak0.pinimg.com/736x/fd/34/cb/fd34cb1f271b40098924a936eeaf0bf3--asian-tea-tea-flavors.jpg"></td>
-        <td width="60%"><p class="title">Taro Milk Boba Tea.........................................$2</p>
-        An out of this world tea with boba comets.</td>
-        <td width="17%">Qty:<br/><input id="qty" type="number" min="0"/></td>
-    </table>
-
-    <table data-price="2">
-        <td><img src="https://bebrainfit.com/wp-content/uploads/2017/01/yerba-mate-tea-720x480.jpg"></td>
-        <td width="60%"><p class="title">Traditional Yerba Mate Tea.........................................$2</p>
-        A popular south american energy booster.</td>
-        <td width="17%">Qty:<br/><input id="qty" type="number" min="0"/></td>
-    </table>
-
-    <table data-price="2">
-        <td><img src="http://i.telegraph.co.uk/multimedia/archive/01434/prose6_1434575c.jpg"></td>
-        <td width="60%"><p class="title">Raseberry Compote.........................................$2</p>
-        A refeshing slovic drink made with fresh naturally sweet raseberries.</td>
-        <td width="17%">Qty:<br/><input id="qty" type="number" min="0"/></td>
-    </table>
-
-    <footer>
+<footer>
     <button onclick="checkout()" type="submit">Checkout</button>
 </footer>
+<script language="javascript" src="menu_list.js" > </script>
 <script language="javascript">
+    //////////////////////////////////////
+    // Slideshow
+    //////////////////////////////////////
     var slideIndex = 0;
-showSlides();
 
-function showSlides() {
-    var i;
-    var slides = document.getElementsByClassName("mySlides");
-    var dots = document.getElementsByClassName("dot");
-    for (i = 0; i < slides.length; i++) {
-       slides[i].style.display = "none";  
+    function showSlides() {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("dot");
+        for (i = 0; i < slides.length; i++) {
+           slides[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex> slides.length) {slideIndex = 1}
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "block";
+        dots[slideIndex-1].className += " active";
+        setTimeout(showSlides, 3000); // Change image every 3 seconds
     }
-    slideIndex++;
-    if (slideIndex> slides.length) {slideIndex = 1}    
-    for (i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(" active", "");
-    }
-    slides[slideIndex-1].style.display = "block";  
-    dots[slideIndex-1].className += " active";
-    setTimeout(showSlides, 3000); // Change image every 3 seconds
-}
-    function extractTableData(table) {
-        let name = table.querySelector("p").innerHTML;
-        let icon = table.querySelector("img").src;
-        let price = parseFloat(table.dataset.price);
-        let qty = parseInt(table.querySelector("#qty").value);
+
+    //////////////////////////////////////
+    // Menu Items
+    //////////////////////////////////////
+    function extractTableData(element) {
         let data;
-        if (price > 0 && qty > 0) {
-            data  = {
-                name : name,
-                icon : icon,
-                price: price,
+
+        let qty = parseInt(element.querySelector("#qty").value);
+        if (qty > 0) {
+            let i = parseInt(element.dataset.sectionIndex);
+            let j = parseInt(element.dataset.itemIndex);
+            let item = menuSections[i].list[j];
+
+            data = {
+                name : item.name,
+                icon : item.icon,
+                price: item.price,
                 qty  : qty
             };
         }
         return data;
     }
+
     function checkout() {
-        let menuItems = document.querySelectorAll('table[data-price]');
+        let menuItems = document.querySelectorAll('.menuTableRow');
         let dataItems = [];
         for (let i = 0; i < menuItems.length; i++) {
             let data = extractTableData(menuItems[i]);
@@ -414,6 +237,124 @@ function showSlides() {
         }
         sessionStorage.cart = JSON.stringify(dataItems);
         window.open('checkout.html');
+    }
+
+    function updateMenu() {
+        let root = document.getElementById('menu_list');
+        let navMenu = document.getElementById('nav_menu');
+        let slideShow = document.getElementById('slideshow');
+        let slideShowDots = document.getElementById('slideshow_dots');
+        let slide=0;
+
+        let td;
+
+        // Iterate sections
+        for (let i = 0; i < menuSections.length; ++i) {
+            let section = menuSections[i];
+
+            // <li><a href="#Appetizers">Appetizers</a></li>
+            let navItem = document.createElement('li');
+            let navLink = navItem.appendChild(document.createElement('a'));
+            navLink.href = '#' + section.name;
+            navLink.innerHTML = section.name;
+            navMenu.appendChild(navItem);
+
+            // <h1 align="center" id="Appetizers" class='menuSectionTitle'>- Appetizers-</h1>
+            let header = document.createElement('h1');
+            header.id = section.name;
+            header.className = 'menuSectionTitle';
+            header.align = 'center';
+            header.innerHTML = '- ' + section.name + ' -';
+
+            let table = document.createElement('table');
+            table.className = 'menuTable';
+
+            // Iterate items of the current section
+            let items = section.list;
+            for (let j = 0; j < items.length; ++j) {
+                /*
+                <table data-price="10">
+                    <td><img src="http://divascancook.com/wp-content/uploads/2011/11/IMG_22021.jpg"></td>
+                    <td width="60%"><p class="menuItemTitle">Candy Yams.........................................$10</p>
+                        Sweet potatoes with a dash of our finest cinnamon.</td>
+                    <td width="17%">Qty:<br/><input id="qty" type="number" min="0"/></td>
+                </table>
+                */
+                let item = items[j];
+
+                // menu item table row
+                let row = document.createElement('tr');
+                row.className = 'menuTableRow';
+                row.dataset.sectionIndex = i;
+                row.dataset.itemIndex = j;
+                row.dataset.price = item.price;
+
+                // image
+                let imgIcon = document.createElement('img');
+                imgIcon.className = 'menuItemImage';
+                imgIcon.src = item.icon;
+
+                td = document.createElement('td');
+                td.appendChild(imgIcon);
+                row.appendChild(td);
+
+                // name
+                let pName = document.createElement('p');
+                pName.className = 'menuItemTitle';
+                pName.innerHTML = item.name + '.........................' + '$' + item.price;
+
+                let tDesc = document.createTextNode('\n' + item.desc);
+
+                td = document.createElement('td');
+                td.width = "60%";
+                td.appendChild(pName);
+                td.appendChild(tDesc);
+                row.appendChild(td);
+
+                // quantity
+                let inputQty = document.createElement('input');
+                inputQty.id = 'qty';
+                inputQty.type = 'number';
+                inputQty.min = '0';
+
+                td = document.createElement('td');
+                td.width = "17%";
+                td.appendChild(document.createTextNode('Qty:'));
+                td.appendChild(document.createElement('br'));
+                td.appendChild(inputQty);
+                row.appendChild(td);
+
+                // row end
+                table.appendChild(row);
+
+                if (item.slide)
+                {
+                    /*
+                    <div class="mySlides fade">
+                        <img src="http://blahblah.jpg" class="slideshowimg">
+                        <div class="text">The MARTIN LUTHER KING</div>
+                    </div>
+                    */
+
+                    let divSlide = slideShow.appendChild(document.createElement('div'));
+                    divSlide.className = 'mySlides fade';
+                    let imgSlide = divSlide.appendChild(document.createElement('img'));
+                    imgSlide.className = 'slideshowimg';
+                    imgSlide.src = item.icon;
+                    let txtSlide = divSlide.appendChild(document.createElement('div'));
+                    txtSlide.className = 'slide-text';
+                    txtSlide.innerHTML = item.name;
+
+                    // <span class="dot" onclick="currentSlide(1)"></span>
+                    let spanSlideDot = slideShowDots.appendChild(document.createElement('span'));
+                    spanSlideDot.className='dot';
+                    spanSlideDot.onclick = 'currentSlide(' + ++slideIndex + ')';
+                }
+            }
+
+            root.appendChild(header);
+            root.appendChild(table);
+        }
     }
 </script>
 </body>
