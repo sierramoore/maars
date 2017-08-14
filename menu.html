@@ -33,15 +33,6 @@
             text-align: center;
             font-size: 35px;
         }
-        button {
-            border-radius: 10%;
-            background-color: darkorange;
-            color: MidnightBlue;
-            border: none;
-            padding: 20px;
-            font-size: 20px;
-            display: inline-block;
-        }
         td {
             color: #BF5C5C;
         }
@@ -50,15 +41,13 @@
             font-family: 'Lobster', cursive;
         }
         input {
-            background-color: #F3F4D6;
+            background-color: #FEF5EE;
             color: MidnightBlue;
             font-family: 'Lobster', cursive;
             font-size: 23px;
             border-radius: 20%;
             width: 30%;
-        }
-        input[type="submit"] {
-            width: 93%;
+            text-align: right;
         }
         a {
             color: darkorange;
@@ -141,19 +130,40 @@
             display: block;
         }
         .menuTable {
-            width: 930px;
+            width: 70%;
             margin: auto;
             border: 1px solid silver;
             border-collapse: collapse;
-            background: #FEF5EE;
+            background: #ffe6c6;
             font-family: 'Lobster', cursive;
         }
         .menuTableRow {
             border: 1px solid silver;
         }
+        .btnAdd{
+            height: 21px;
+            width: 100px;
+        }
+        .btnCheckout{
+            height: 21px;
+            width: 100px;
+        }
+        .btnClearCart{
+            height: 21px;
+            width: 21px;
+        }
+        .bigButton {
+            border-radius: 10%;
+            background-color: darkorange;
+            color: MidnightBlue;
+            border: none;
+            padding: 20px;
+            font-size: 20px;
+            display: inline-block;
+        }
     </style>
 </head>
-<body onload='updateMenu(); showSlides();'>
+<body onload='initPage()'>
 <dl>
     <header>
         <dt>Maars Menu</dt>
@@ -161,10 +171,23 @@
     </header>
 </dl>
 
-<div class="side-nav">
+<div class='side-nav'>
+    <h3>- Navigation -</h3>
     <ul id="nav_menu">
         <!-- WARNING: dynamically populated when page is loaded-->
     </ul>
+    <br>
+    <h3>- Your Order -</h3>
+    <table>
+        <thead>
+            <tr> <th>Item</th> <th>Qty</th> </tr>
+        </thead>
+        <tbody id='cart_table'>
+        </tbody>
+    </table>
+    <br>
+    <button class='btnCheckout' onclick="resetCart()" type="submit">Clear Cart</button>
+    <button class='btnCheckout' onclick="checkout()" type="submit">Checkout</button>
 </div>
 <div id='slideshow' class="slideshow-container">
     <!-- WARNING: dynamically populated when page is loaded-->
@@ -178,8 +201,9 @@
 </div>
 
 <footer>
-    <button onclick="checkout()" type="submit">Checkout</button>
+    <button class='bigButton' onclick="checkout()" type="submit">Checkout</button>
 </footer>
+<script language="javascript" src="cart.js" > </script>
 <script language="javascript" src="menu_list.js" > </script>
 <script language="javascript">
     //////////////////////////////////////
@@ -207,36 +231,54 @@
     //////////////////////////////////////
     // Menu Items
     //////////////////////////////////////
-    function extractTableData(element) {
-        let data;
+    var orderList = [];
 
-        let qty = parseInt(element.querySelector("#qty").value);
-        if (qty > 0) {
-            let i = parseInt(element.dataset.sectionIndex);
-            let j = parseInt(element.dataset.itemIndex);
-            let item = menuSections[i].list[j];
-
-            data = {
-                name : item.name,
-                icon : item.icon,
-                price: item.price,
-                qty  : qty
-            };
-        }
-        return data;
-    }
 
     function checkout() {
-        let menuItems = document.querySelectorAll('.menuTableRow');
-        let dataItems = [];
-        for (let i = 0; i < menuItems.length; i++) {
-            let data = extractTableData(menuItems[i]);
-            if (data != null) {
-                dataItems.push(data);
+        window.open('checkout.html','_self');
+    }
+
+    function resetCart(){
+        orderList = clearCart();
+        updateCartView(orderList);
+    }
+
+    function addToCart(menuItem, qty) {
+        if (qty > 0) {                      //if quantity is more than 0
+            let orderItem = findOrderItem(orderList, menuItem); // find current menu item
+
+            if (orderItem != null) {        // if the order item is more than 0
+                orderItem.qty += qty;       // add qty of item to that same line where it was first added (not multipule lines of the same item)
             }
+            else {
+                orderList.push( { menuItem: menuItem, qty : qty } );    // then the item has not been added 2 or more times and just display the item added to cart for the first time
+            }
+
+            saveCart(orderList);
+            updateCartView(orderList);               // in both cases update cart view in side bar
         }
-        sessionStorage.cart = JSON.stringify(dataItems);
-        window.open('checkout.html');
+    }
+
+    function populateCartTable(tableBody, orderItems) {
+        for (let i = 0; i < orderItems.length; ++i) {
+            let orderItem = orderItems[i];
+
+            let row = tableBody.appendChild(document.createElement('tr'));
+            let td = row.appendChild(document.createElement('td'));
+            td.innerHTML = orderItem.menuItem.name;
+            td = row.appendChild(document.createElement('td'));
+            td.innerHTML = orderItem.qty;
+        }
+    }
+    
+    function updateCartView(orderItems) {
+        let oldTableBody = document.getElementById('cart_table');
+        let newTableBody = document.createElement('tbody');
+        newTableBody.id = oldTableBody.id;
+        populateCartTable(newTableBody, orderItems);
+
+        let table = oldTableBody.parentNode;
+        table.replaceChild(newTableBody, oldTableBody);
     }
 
     function updateMenu() {
@@ -311,18 +353,29 @@
                 td.appendChild(tDesc);
                 row.appendChild(td);
 
-                // quantity
-                let inputQty = document.createElement('input');
-                inputQty.id = 'qty';
-                inputQty.type = 'number';
-                inputQty.min = '0';
+                let selQty = document.createElement('select');
+                for (let n = 1; n <= 10; ++n) {
+                    let option = selQty.appendChild(document.createElement('option'));
+                    option.value = n;
+                    option.innerHTML = n;
+                }
 
                 td = document.createElement('td');
-                td.width = "17%";
-                td.appendChild(document.createTextNode('Qty:'));
-                td.appendChild(document.createElement('br'));
-                td.appendChild(inputQty);
+                td.appendChild(document.createTextNode('Qty: '));
+                td.appendChild(selQty);
                 row.appendChild(td);
+
+                // add button
+                let btnAdd = document.createElement('button');
+                btnAdd.className = 'btnAdd';
+                btnAdd.appendChild(document.createTextNode('Add'));
+                btnAdd.type = 'button';
+                btnAdd.onclick = function () { addToCart(item, parseInt(selQty.value)); selQty.value = 1; };
+                td = document.createElement('td');
+                td.appendChild(btnAdd);
+                row.appendChild(td);
+
+
 
                 // row end
                 table.appendChild(row);
@@ -355,6 +408,13 @@
             root.appendChild(header);
             root.appendChild(table);
         }
+    }
+
+    function initPage() {
+        updateMenu();
+        showSlides();
+        orderList = loadCart();
+        updateCartView(orderList);
     }
 </script>
 </body>
