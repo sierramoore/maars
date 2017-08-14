@@ -189,7 +189,7 @@
     <input onclick="confirmCashPayment()" type=submit value="Confirm Payment">
 </div>
 
-
+<script language="javascript" src="cart.js" > </script>
 <script language="JavaScript">
     function displaySummary(subtotal, discountedSubtotal, tax, total) {
         document.getElementById("order_subtotal").innerHTML = subtotal.toFixed(2);
@@ -200,15 +200,15 @@
         //document.getElementById("order_discountedSubtotal").innerHTML = discountedSubtotal.toFixed(2);
     }
 
-    function displayCartItems(items) {
+    function displayCartItems(orderItems) {
         let table = document.getElementById("cart");
 
-        for (let i = 0; i < items.length; ++i) {
-            let item = items[i];
+        for (let i = 0; i < orderItems.length; ++i) {
+            let orderItem = orderItems[i];
             let row = document.createElement('tr');
 
             let imgIcon = document.createElement('img');
-            imgIcon.src = item.icon;
+            imgIcon.src = orderItem.menuItem.icon;
 
             let tdIcon = document.createElement('td');
             row.appendChild(tdIcon);
@@ -216,15 +216,15 @@
 
             let tdName = document.createElement('td');
             row.appendChild(tdName);
-            tdName.innerHTML = item.name;
+            tdName.innerHTML = orderItem.menuItem.name;
 
             let tdPrice = document.createElement('td');
             row.appendChild(tdPrice);
-            tdPrice.innerHTML = item.price;
+            tdPrice.innerHTML = orderItem.menuItem.price;
 
             let tdQty = document.createElement('td');
             row.appendChild(tdQty);
-            tdQty.innerHTML = item.qty;
+            tdQty.innerHTML = orderItem.qty;
 
             table.appendChild(row);
         }
@@ -237,17 +237,17 @@
 
     function updateSummary() {
         let subtotal = 0;
-        let items = JSON.parse(sessionStorage.cart);
-        for (let i = 0; i < items.length; ++i) {
-            let item = items[i];
-            subtotal += item.price * item.qty;
+        let orderItems = loadCart();
+        for (let i = 0; i < orderItems.length; ++i) {
+            let orderItem = orderItems[i];
+            subtotal += orderItem.menuItem.price * orderItem.qty;
         }
         let discountedSubtotal = discount(subtotal);
         let tax = 0.08875 * discountedSubtotal;
         let total = discountedSubtotal + tax + calculateTip(discountedSubtotal + tax);
 
         displaySummary(subtotal, discountedSubtotal, tax, total);
-        return items;
+        return orderItems;
     }
 
     function discount(sum) {
@@ -298,11 +298,13 @@
     }
 
     function confirm() {
+        clearCart();
         alert("Payment success");
     }
     function confirmCashPayment() {
         let remainder = parseFloat(document.getElementById('rest').innerHTML);
         if (remainder >= 0) {
+            clearCart();
             alert("Cash payment success");
         }
         else {
