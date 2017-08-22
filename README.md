@@ -19,8 +19,8 @@ function checks the name attribute for the specified value of username "maars" a
 
 # Table
 Basic Idea- Create 10 tables, 5 tables of 2 and 5 tables of 4.(although can't tell which is which) Wanted to show explicitly if a table was empty or taken so i toggled a simple image of an empty table and a free table on click on the button. On click of the "Seat Table" button, the timer will start and once it hits 60:00 minutes it will begin flashing red to indicate the customers time for thier table is up. Also the "Seat Table" button becomes red and the text on the button becomes "Free Up Table" and on the second click of the button it will toggle back to the previous empty table image and silver "Seat Table" button, the timer will also be reset to 00:00. 
-html-
-Used a <header> to style and display Maars Seating bar across screen. The <dl> (decriptive list) to place the link in the <dd> (decriptive data) one level down and place in right corner.
+
+html- Used a <header> to style and display Maars Seating bar across screen. The <dl> (decriptive list) to place the link in the <dd> (decriptive data) one level down and place in right corner.
 Placed tables in <li> list tags to appear side by side.
 The inputs onclick attribute toggles the table image from empty table picture to occupied table image.
 
@@ -36,6 +36,15 @@ function updateTableTimerView
  -The rest have comments by the functions-
  
 # Menu
+Basic Idea- Have a slideshow, and a header with restaurant name and a link to go to seating and a checkout button to take user to the checkout page. There are 20 items each with a picture, title of food, description of food, price, a qty selector, and an "add" button.
+
+The quantity is automatically at 1 for convenience to quickly press add for that item as it is often common to add only 1 of an item when buying food. There is a drop down arrow for qty 1-10, there is no limit to how much you can add of an item. On each click of the “Add” button next to the item it will add 1 to cart by default.
+There is a side navigation that follows your scroll for Appetizers, Main Course, Desserts, and Drinks to quickly navigate through the items.
+There is a side cart that follows your scroll with any items you added to cart. Also there are “Clear Cart” and “Checkout” buttons below it to quickly clear the order, or do a fast checkout. 
+*If you keeping clicking “Add” for the same item it will display in the side cart under the same item and the qty will go up by 1 on each click.
+There is also another big “Checkout” button on the very bottom of the menu.
+
+
 Basic tables with table data.
 *slideshow made automatic by Resham
 
