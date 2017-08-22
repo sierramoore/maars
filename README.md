@@ -6,8 +6,8 @@ Restaurant POS system - school project
 index.html - default page, redirects to login page
 login.html - employee login page username= maars, password= password
 table.html - 10 tables with onclick occupied image and timer
-menu.html  - a list of 20 items, with description, price, quanity selectors, sidebar, slideshow
-checkout.html - lists items, prices, quantity, credit card or cash options
+menu.html  - a list of 20 items, with description, price, quanity selectors, sidebar, side cart, slideshow
+checkout.html - lists items, prices, quantity, credit card and cash options
 
 # Login
 html-
