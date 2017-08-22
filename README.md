@@ -10,12 +10,15 @@ menu.html  - a list of 20 items, with description, price, quanity selectors, sid
 checkout.html - lists items, prices, quantity, credit card and cash options
 
 # Login
+Basic Idea- Create a login form with a specified username and password with a pop up window if username and/or password is incorrect.
+and a background image.
 html-
 Simple input fields for username and password inside a form tag.
 js-
 function checks the name attribute for the specified value of username "maars" and password "password" if both statements are true then on click of the login button it will direct you to the table page, if not then a window alert will say "Incorrect Password and Username"
 
 # Table
+Basic Idea- Create 10 tables, 5 tables of 2 and 5 tables of 4.(although can't tell which is which) Wanted to show explicitly if a table was empty or taken so i toggled a simple image of an empty table and a free table on click on the button. On click of the "Seat Table" button, the timer will start and once it hits 60:00 minutes it will begin flashing red to indicate the customers time for thier table is up. Also the "Seat Table" button becomes red and the text on the button becomes "Free Up Table" and on the second click of the button it will toggle back to the previous empty table image and silver "Seat Table" button, the timer will also be reset to 00:00. 
 html-
 Used a <header> to style and display Maars Seating bar across screen. The <dl> (decriptive list) to place the link in the <dd> (decriptive data) one level down and place in right corner.
 Placed tables in <li> list tags to appear side by side.
