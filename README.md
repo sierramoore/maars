@@ -44,21 +44,24 @@ There is a side cart that follows your scroll with any items you added to cart. 
 *If you keeping clicking “Add” for the same item it will display in the side cart under the same item and the qty will go up by 1 on each click.
 There is also another big “Checkout” button on the very bottom of the menu.
 
+The menu items are in one JavaScript array with name, desc, icon, and price (some with slide) each in their categories of for Appetizers, Main Course, Desserts, and Drinks.
+-The menu items, and side navigation are dynamically populated when the page is loaded.
 
-Basic tables with table data.
 *slideshow made automatic by Resham
 
-js-
-function extractTableData(table)
-
-function checkout()
 
 # Checkout 
-Basic table to display Product, name, price, qty
-Another table to display Totals etc..
+Basic Idea-  On load of the checkout page the function displayCart will run and use sessionStorage to save the previous items added to cart and list them in order. There is an updateSummary function to calculate the subtotal, discount (if applicable), tax, tip, and total underneath the displayed cart items.
+-Subtotal is all the items added together.
+-Discount if order is $50 or more
+-Tax rate of 8.875% 
+-Tip is calculated after subtotal, discount, and tax. Options of 0%, 15%, 18%, or 20%
+On click of “Confirm Payment” in the credit card section, the cart will clear the sessionStorage and return an empty cart when linked back to the menu.
+On click of “Confirm Payment” in the cash section, the cart will clear *if you enter an amout of cash larger than the order amount* the sessionStorage and return an empty cart when linked back to the menu. Otherwise a pop up will say “Insufficient Funds” and when linked back to menu all previous history in sessionStorage will remain.
+
+
 *Max credit card and CVV numbers made by using pattern attribute done by annalise
 
-Inside the body an onload attribute to utilize the displayCart function displays any items added to cart using sessionStorage.
 
 
  
