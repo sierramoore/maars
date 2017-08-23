@@ -1,3 +1,4 @@
+// one array of all menu items to replace html tables
 
 var menuSections = [
     {   name: "Appetizers",
