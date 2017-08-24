@@ -63,5 +63,14 @@ On click of “Confirm Payment” in the cash section, the cart will clear *if y
 *Max credit card and CVV numbers made by using pattern attribute done by annalise
 
 
+# Authors  
+https://github.com/Amy7 Amy Quan - Helped with the layout of the menu and table for the checkout page.
+
+https://github.com/waymackenzie Mackenzie Way - Did the first draft of credit card checkout fields.
+
+https://github.com/Resham1458 Resham - Did the slideshow on the menu page, styling first draft for checkout page. 
+
+https://github.com/annaliseh Annalise Hospedales - Did the credit card input number limits, and discount function, and helped with tip function.
+
 
  
