@@ -14,35 +14,35 @@
             box-sizing: border-box
         }
         body {
-            background-color: peachpuff;
+            background-color: #f1ffff;
+
         }
         header{
-            background-color: MidnightBlue;
-            border: solid blue;
+            background-color: #aecfd3;
             padding: 10px;
-            color: darkorange;
+            color: #ba720e;
             text-align: center;
             font-size: 35px;
+            opacity: 0.6;
         }
         footer{
-            background-color: MidnightBlue;
-            border: solid blue;
+            background-color: #aecfd3;
             padding: 10px;
             margin-top: 30px;
-            color: darkorange;
             text-align: center;
             font-size: 35px;
+            opacity: 0.8;
         }
         td {
-            color: #BF5C5C;
+            color: #ba720e;
         }
         p {
             text-align: center;
             font-family: 'Lobster', cursive;
+            color: #ba720e;
         }
         input {
-            background-color: #FEF5EE;
-            color: MidnightBlue;
+
             font-family: 'Lobster', cursive;
             font-size: 23px;
             border-radius: 20%;
@@ -54,8 +54,8 @@
             font-size: 20px;
             text-align: right;
         }
-        a:hover {
-            color: peachpuff;
+        h3{
+            padding-left: 60px;
         }
         .slideshow-container {
             width: 60%;
@@ -71,15 +71,19 @@
         }
         .side-nav {
             position: fixed;
-            margin-left: 30px;
+            margin-left: 0px;
+
         }
         .slide-text {
-            color: darkorange;
-            font-size: 15px;
+            color: black;
+            background-color: #aecfd3;
+            width: 100%;
+            opacity: 0.6;
+            font-size: 25px;
             padding: 8px 12px;
             position: absolute;
-            bottom: 15px;
-            width: 100%;
+            margin: auto;
+            bottom: 5px;
             text-align: center;
         }
         #page-wrap{
@@ -88,15 +92,15 @@
         }
         ul {
             list-style-type: none;
-            margin: 0;
-            padding: 0;
-            width: 200px;
+            margin: auto;
+            padding: 0px;
+            width: 166px;
             background-color: #f1f1f1;
             border: 1px solid #555;
         }
         li a {
             display: block;
-            color: #000;
+
             padding: 8px 16px;
             text-decoration: none;
             color: MidnightBlue;
@@ -104,7 +108,8 @@
         li {
             text-align: center;
             border-bottom: 1px solid #555;
-            background: #FEF5EE;
+            background: #fefedb;
+            opacity: 0.9;
         }
         li:last-child {
             border-bottom: none;
@@ -134,8 +139,9 @@
             margin: auto;
             border: 1px solid silver;
             border-collapse: collapse;
-            background: #ffe6c6;
+            background: #f4fcff;
             font-family: 'Lobster', cursive;
+
         }
         .menuTableRow {
             border: 1px solid silver;
@@ -154,30 +160,58 @@
         }
         .bigButton {
             border-radius: 10%;
-            background-color: darkorange;
-            color: MidnightBlue;
+            background-color: #F3F4D6;
+            color: #ba720e;
             border: none;
             padding: 20px;
             font-size: 20px;
             display: inline-block;
         }
+        .bigBbutton:hover{
+            background-color: #F3F4D6;
+            opacity: 0.6;
+        }
+
+        button:hover{
+            background-color: #F3F4D6;
+            opacity: 0.6;
+        }
+        .navbar{
+            background-color:#aecfd3;
+            padding: 10px 60px;
+            margin: 10px;
+            color:#ba720e;
+            font-size: 35px;
+            opacity: 0.6;
+        }
+        .navlist a{
+            color:#ba720e;
+            font-size: 20px;
+            text-decoration: none;
+            float: right;
+            padding: 15px 45px 5px 10px;
+        }
+        .navlist a:hover{
+            color: black;
+        }
     </style>
 </head>
 <body onload='initPage()'>
-<dl>
-    <header>
-        <dt>Maars Menu</dt>
-        <a href="table.html"> <dd>Go to Seating</dd> </a>
-    </header>
-</dl>
+
+<div class="navbar">
+    <span>Menu</span>
+    <span class="navlist">
+        <span><a href="checkout.html">Checkout</a></span>
+        <span><a href="table.html">Tables</a></span>
+    </span>
+</div>
 
 <div class='side-nav'>
-    <h3>- Navigation -</h3>
     <ul id="nav_menu">
         <!-- WARNING: dynamically populated when page is loaded-->
     </ul>
     <br>
-    <h3>- Your Order -</h3>
+    <h3>- Cart -</h3>
     <table>
         <thead>
             <tr> <th>Item</th> <th>Qty</th> </tr>

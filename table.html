@@ -9,7 +9,7 @@
 
         body {
             color: black;
-            background-color: peachpuff;
+            background-color: #f1ffff;
         }
 
         h1 {
@@ -64,108 +64,51 @@
         }
 
         .tableButtonFree {
-            background-color: darkgray;
+            background-color: #aecfd3;
             margin-top: 65px;
-            color: midnightblue;
+            color: #ba720e;
             font-weight: bold;
             width: 150px;
         }
 
         .tableButtonOccupied {
-            background-color: red;
+            background-color: #ba720e;
             margin-top: 65px;
-            color: midnightblue;
+            color: #aecfd3;
             font-weight: bold;
             width: 150px;
         }
-        header{
-            background-color:MidnightBlue;
-            border: solid blue;
-            padding:10px;
-            color:darkorange;
-            text-align:center;
+        .navbar{
+            background-color:#aecfd3;
+            padding: 10px 60px;
+            color:#ba720e;
             font-size: 35px;
+            opacity: 0.6;
+
         }
-        a{
-            color:darkorange;
+         .navlist a{
+            color:#ba720e;
             font-size: 20px;
-            text-align:right;
+            text-decoration: none;
+            float: right;
+             padding: 15px 45px 5px 10px;
         }
-        a:hover{
-            color:peachpuff;
-        }
+       .navlist a:hover{
+           color: black;
+       }
 
     </style>
 </head>
 
-<script type="text/javascript">
-    function formatTimeXX(t) {
-        if (t < 10)
-            return "0" + t;
-        else
-            return t;
-    }
 
-    function updateTableTimerView(table, timeInSec) {
-        let min = Math.floor(timeInSec / 60);
-        let sec = timeInSec % 60;
+<div class="navbar">
+        <span>Tables</span>
+        <span class="navlist">
+            <span><a href="checkout.html">Checkout</a></span>
+            <span><a href="menu.html">Menu</a></span>
+        </span>
+</div>
 
-        let timer = table.querySelector("#timer");
-        timer.innerHTML = formatTimeXX(min) + ":" + formatTimeXX(sec);
-
-        if (timeInSec == 0) {
-            // reset timer style to normal
-            timer.className = "timer";
-        }
-        else if (timeInSec == 3600) {
-            // switch to the red flashing style
-            timer.className = "timerRed";
-        }
-    }
-
-    function updateTableTimer(table) {
-        let time = table.dataset.time;
-        time++;
-        time++;
-        table.dataset.time = time;
-        updateTableTimerView(table, time);
-    }
-
-    function toggleTable(button) {
-        let table = button.parentNode;
-        let clock = table.dataset.clock;
-
-        if (isNaN(clock)) {
-            // table is currently free, let's occupy it
-            table.dataset.time = 0;
-            clock = setInterval(updateTableTimer, 1000, table);
-
-            table.className = "tableOccupied";
-            button.className = "tableButtonOccupied";
-            button.value = "Free Up Table";
-        }
-        else {
-            // table is currently occupied, let's free it
-
-            // stop the clock
-            clearInterval(clock);
-            clock = null;
-
-            // update the clock on the screen
-            updateTableTimerView(table, 0);
-
-            // update the widget
-            table.className = "tableFree";
-            button.className = "tableButtonFree";
-            button.value = "Seat Table";
-        }
-
-        table.dataset.clock = clock;
-    }
-</script>
-<dl>
-    <header><dt align="center">Maars Seating</dt><a href="menu.html"><dd>Takeout</dd></a></header>
-</dl>
 <ul class="tableMap" >
     <li>
         <div class="tableFree">
@@ -238,5 +181,71 @@
         </div>
     </li>
 </ul>
+
+<script type="text/javascript">
+    function formatTimeXX(t) {
+        if (t < 10)
+            return "0" + t;
+        else
+            return t;
+    }
+
+    function updateTableTimerView(table, timeInSec) {
+        let min = Math.floor(timeInSec / 60);
+        let sec = timeInSec % 60;
+
+        let timer = table.querySelector("#timer");
+        timer.innerHTML = formatTimeXX(min) + ":" + formatTimeXX(sec);
+
+        if (timeInSec == 0) {
+            // reset timer style to normal
+            timer.className = "timer";
+        }
+        else if (timeInSec == 3600) {
+            // switch to the red flashing style
+            timer.className = "timerRed";
+        }
+    }
+
+    function updateTableTimer(table) {
+        let time = table.dataset.time;
+        time++;
+        time++;
+        table.dataset.time = time;
+        updateTableTimerView(table, time);
+    }
+
+    function toggleTable(button) {
+        let table = button.parentNode;
+        let clock = table.dataset.clock;
+
+        if (isNaN(clock)) {
+            // table is currently free, let's occupy it
+            table.dataset.time = 0;
+            clock = setInterval(updateTableTimer, 1000, table);
+
+            table.className = "tableOccupied";
+            button.className = "tableButtonOccupied";
+            button.value = "Free Up Table";
+        }
+        else {
+            // table is currently occupied, let's free it
+
+            // stop the clock
+            clearInterval(clock);
+            clock = null;
+
+            // update the clock on the screen
+            updateTableTimerView(table, 0);
+
+            // update the widget
+            table.className = "tableFree";
+            button.className = "tableButtonFree";
+            button.value = "Seat Table";
+        }
+
+        table.dataset.clock = clock;
+    }
+</script>
 </body>
 </html>

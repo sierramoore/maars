@@ -6,39 +6,50 @@
 	<style type="text/css">
 		*{
 			text-align: center;
-			color:darkorange;
+			color: #ba720e;
 			align-content: center;
 			font-family: 'Artifika', serif;
 		}
 		body{
-			background-image: url("https://media.wired.com/photos/59267ed78d4ebc5ab806a790/4:3/w_2400,c_limit/Mars_Op-Ed_200144771-001.jpg");
+			background-image: url("http://2.bp.blogspot.com/-y3P_IdrgA08/VYyU_aqP4pI/AAAAAAAAFZU/o__AYIGOed8/s1600/_DSC3262.jpg");
+			background-repeat: no-repeat;
+			-webkit-background-size: cover;
+			background-color:#aecfd3;
+			opacity: 0.97;
+		}
+		footer{
+
 		}
 		h1{
-			background-color:MidnightBlue;
-			border: solid blue;
+			background-color: #aecfd3;
 			padding:10px;
+			opacity: 0.9;
 		}
 		form{
-			background-color:MidnightBlue;
-			border: solid blue;
+			background-color:#ade6cf;
 			padding:5px;
-			font-size:20pt;
+			font-size:10pt;
+			opacity: 0.8;
 		}
 		div, input[type=button]{
 			border-radius: 10%;
-			background-color:darkorange;
-			color:MidnightBlue;
+			background-color:#aecfd3;
+			color:#ba720e;
 			border:none;
 			display: inline-block;
-			
+			opacity: 0.97;
+
 		}
-		
+
 		input {
-			padding:10px 30px;
+			height: 40px;
+			width: 270px;
+			padding:8px 30px;
 			margin: 5px;
-			font-size:20pt;
-			background-color:lightgrey;
-			border-radius: 50%;
+			font-size:14pt;
+			background-color: #e3fdff;
+			border-radius: 7%;
+
 		}
 
 		
@@ -46,16 +57,16 @@
 	</style>
 </head>
 <body>
-	<h1>Maars Employee Login Portal</h1>
+	<h1>Maars Diner Employee Login Portal</h1>
 
   <div>
 
 	<form name="login">
-	  <input type="text" name="userid" placeholder="Enter Username"/>
+	  <input type="text" name="userid" placeholder="Enter Username 'maars'"/>
 	   <br/>
-	  <input type="password" name="pswrd" placeholder="Enter Password"/><br/>
+	  <input type="password" name="pswrd" placeholder="Enter Password 'password'"/><br/>
 	  <div><input type="button" onclick="check(this.form)" value="Login"/></div>
-	  
+
 	</form>
 
   </div>
@@ -72,7 +83,7 @@
 			alert("Incorrect Password and Username");
 		}
 	}
- 
+
  </script>
 </body>
 </html>

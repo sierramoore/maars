@@ -7,54 +7,34 @@
             font-family: 'Artifika', serif;
         }
 
-        body {
-            background-color: peachpuff;
-            color: MidnightBlue;
-            text-align: center;
-        }
-
         input[type=submit] {
-            color: MidnightBlue;
+            color: #ba720e;
             padding: 5px;
-            background-color: darkorange;
+            background-color: #aecfd3;
             border-radius: 15%;
-            display: inline;
+            display: inline-block;
 
         }
-
         input[type=submit]:hover {
-            background-color: #FBC65D;
-
+            background-color: #f1ffff;
+            opacity: 0.6;
         }
-
         header {
-            background-color: MidnightBlue;
-            border: solid blue;
+            background-color: #aecfd3;
+            opacity: 0.8;
             padding: 10px;
-            color: darkorange;
+            color: #ba720e;
             text-align: center;
             font-size: 35px;
         }
         a{
-            color:darkorange;
+            color:#ba720e;
             font-size: 20px;
             text-align:right;
         }
-        a:hover{
-            color:peachpuff;
-        }
-
-        div {
-            margin: auto;
+        h2, h3{
             text-align: center;
-            width: 30%;
-            border: 3px solid MidnightBlue;
-            padding: 10px;
         }
-        div-table{
-            border: 0px;
-        }
-
         table {
             color: black;
             border-style: solid;
@@ -62,34 +42,53 @@
             margin: 0 auto;
             width: 80%;
         }
-
         th {
-            background-color: #FBC65D;
+            background-color: #aecfd3;
+            opacity: 0.8;
+            color: #ba720e;
             text-align: right;
         }
-
         td {
             text-align: right;
         }
-
         img {
             height: 100px;
             width: 100px;
             display: block;
         }
-        .checkout{
-            color: MidnightBlue;
-            padding: 5px;
-            background-color: darkorange;
-            border-radius: 15%;
-            display: inline;
+        .pay{
+            width: 25%;
+        }
+        .navbar{
+            background-color:#aecfd3;
+            padding: 10px 60px;
+            margin: 10px;
+            color:#ba720e;
+            font-size: 35px;
+            opacity: 0.6;
+        }
+        .navlist a{
+            color:#ba720e;
+            font-size: 20px;
+            text-decoration: none;
+            float: right;
+            padding: 15px 45px 5px 10px;
+        }
+        .navlist a:hover{
+            color: black;
         }
     </style>
 </head>
 <body onload="displayCart();">
-<dl>
-<header><dt>Maars Checkout</dt><a href="table.html"><dd align="left">Back to Table</dd></a><a href="menu.html"><dd align="right">Back to Menu</dd></a></header>
-</dl>
+
+<div class="navbar">
+    <span>Checkout</span>
+    <span class="navlist">
+        <span><a href="table.html">Tables</a></span>
+        <span><a href="menu.html">Menu</a></span>
+    </span>
+</div>
+
 <h2>- Shopping Cart -</h2>
 <table id="cart">
     <tr>
@@ -136,9 +135,9 @@
     </tr>
 </table>
 
-<h3>Credit Card Checkout</h3>
+<h3>Credit Card</h3>
 <div>
-    <table>
+    <table class="pay">
         <tr>
             <td align=left><b>Name on Card:</b></td>
             <td><input type=text placeholder="first and last name"></td>
@@ -154,9 +153,6 @@
             <td><input placeholder="123" size=4 min="3" max="3" pattern="[1-9]{3}"
                        onkeypress='return numberFilter(event)'></td>
         </tr>
-    </table>
-
-    <table cellpadding=5>
         <tr>
             <td align=left><b>Expiration date:</b></td>
             <td><input type=month size=2></td>
@@ -164,19 +160,17 @@
 
     </table>
     <br>
-    <input type=submit value="Confirm Payment" align="center" onclick="confirm()">
+    <center><input type=submit value="Confirm Payment" onclick="confirm()"></center>
 
 </div>
 
-<h3>Cash Checkout</h3>
+<h3>Cash</h3>
 <div>
-    <table>
-
+    <table class="pay">
         <tr>
             <td><b>Cash amount:</b></td>
             <td><input id="cashAmount" onkeypress='return moneyFilter(event)' oninput="subtractCash()"></td>
         </tr>
-
         <tr>
             <td><b>Order amount:</b></td>
             <td id="cash_order_total"></td>
@@ -186,7 +180,7 @@
         </tr>
     </table>
     <br>
-    <input onclick="confirmCashPayment()" type=submit value="Confirm Payment">
+    <center><input onclick="confirmCashPayment()" type=submit value="Confirm Payment"></center>
 </div>
 
 <script language="javascript" src="cart.js" > </script>
