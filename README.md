@@ -1,5 +1,5 @@
 # maars
-Restaurant POS system - school project
+Restaurant POS system - School project
 
 # Project Structure
 _[images]   - a folder of a picture of an empty table and an occupied table_
@@ -9,14 +9,14 @@ _table.html - 10 tables with onclick occupied image and timer_
 _menu.html  - a list of 20 items, with description, price, quantity selectors, sidebar, side cart, and slideshow_
 _checkout.html - lists items, prices, quantity, credit card and cash options_
 
-# Login
+### **Login:**
 _Basic Idea- Create a login form with a specified username and password with a pop up window if username and/or password is incorrect.
 and a background image._
 _HTML- Simple input fields for username and password inside a form tag._
 _JS- function checks the name attribute for the specified value of username "maars" and password "password" if both statements are true then on click of the login button it will direct you to the table page,
 if not then a window alert will alert "Incorrect Password and Username"_
 
-# Table
+### **Table:**
 _Basic Idea- Create 10 tables, 5 tables of 2 and 5 tables of 4.(currently undifferentiated) Wanted to show explicitly if a table was empty or taken so an image of a free table and an occupied table are toggled on click of "seat table".
  Also On click of the "Seat Table" button, the button text will turn into "Free Up Table" and a timer will start from 00:00 and once it hits 60:00 minutes it will begin flashing red to indicate it is the customers time for their table.
  Onclick of "Free Up table" the image will show an empty table and the timer will reset to 00:00._
@@ -34,7 +34,7 @@ _JS- Function formatTimeXX(t) says if the time is less than 10 seconds display a
  
  _Toggle table functions are commented next to lines in code_
  
-# Menu
+### **Menu:**
 _Basic Idea- Have a slideshow, 20 menu items with an "add" to cart button, a header with restaurant name and links to go to seating and checkout. Added in side cart and navigation._
 
 _For each menu item there is a quantity selector that is automatically at 1 for convenience to quickly press add for that item. A a drop down arrow for qty 1-10
@@ -52,7 +52,7 @@ _ Menu items and side navigation are dynamically populated when the page is load
 *slideshow made automatic by Resham
 
 
-# Checkout 
+### **Checkout:**
 _Basic Idea- On load of the checkout page, the function displayCart will use saved sessionStorage of items added to cart and list them in order._
 _ updateSummary function used to calculate the subtotal, discount (if applicable), tax, tip, and total underneath the displayed cart items.
 
