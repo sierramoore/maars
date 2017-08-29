@@ -2,68 +2,75 @@
 Restaurant POS system - school project
 
 # Project Structure
-[images]   - a folder of a picture of an empty table and an occupied table
-index.html - default page, redirects to login page
-login.html - employee login page username= maars, password= password
-table.html - 10 tables with onclick occupied image and timer
-menu.html  - a list of 20 items, with description, price, quanity selectors, sidebar, side cart, slideshow
-checkout.html - lists items, prices, quantity, credit card and cash options
+_[images]   - a folder of a picture of an empty table and an occupied table_
+_index.html - default page, redirects to login page_
+_login.html - employee login page username= maars, password= password_
+_table.html - 10 tables with onclick occupied image and timer_
+_menu.html  - a list of 20 items, with description, price, quantity selectors, sidebar, side cart, and slideshow_
+_checkout.html - lists items, prices, quantity, credit card and cash options_
 
 # Login
-Basic Idea- Create a login form with a specified username and password with a pop up window if username and/or password is incorrect.
-and a background image.
-html-
-Simple input fields for username and password inside a form tag.
-js-
-function checks the name attribute for the specified value of username "maars" and password "password" if both statements are true then on click of the login button it will direct you to the table page, if not then a window alert will say "Incorrect Password and Username"
+_Basic Idea- Create a login form with a specified username and password with a pop up window if username and/or password is incorrect.
+and a background image._
+_HTML- Simple input fields for username and password inside a form tag._
+_JS- function checks the name attribute for the specified value of username "maars" and password "password" if both statements are true then on click of the login button it will direct you to the table page,
+if not then a window alert will alert "Incorrect Password and Username"_
 
 # Table
-Basic Idea- Create 10 tables, 5 tables of 2 and 5 tables of 4.(although can't tell which is which) Wanted to show explicitly if a table was empty or taken so i toggled a simple image of an empty table and a free table on click on the button. On click of the "Seat Table" button, the timer will start and once it hits 60:00 minutes it will begin flashing red to indicate the customers time for thier table is up. Also the "Seat Table" button becomes red and the text on the button becomes "Free Up Table" and on the second click of the button it will toggle back to the previous empty table image and silver "Seat Table" button, the timer will also be reset to 00:00. 
+_Basic Idea- Create 10 tables, 5 tables of 2 and 5 tables of 4.(currently undifferentiated) Wanted to show explicitly if a table was empty or taken so an image of a free table and an occupied table are toggled on click of "seat table".
+ Also On click of the "Seat Table" button, the button text will turn into "Free Up Table" and a timer will start from 00:00 and once it hits 60:00 minutes it will begin flashing red to indicate it is the customers time for their table.
+ Onclick of "Free Up table" the image will show an empty table and the timer will reset to 00:00._
 
-html- Used a <header> to style and display Maars Seating bar across screen. The <dl> (decriptive list) to place the link in the <dd> (decriptive data) one level down and place in right corner.
-Placed tables in <li> list tags to appear side by side.
-The inputs onclick attribute toggles the table image from empty table picture to occupied table image.
+_html- Each table is in a list and div with a css styling class. A header for table. A paragraph for the timer with an id of timer to call the function to start and stop the time.
+An input tag for the "Seat table" button with an onclick attribute that toggles the table image from empty table picture to occupied table image._
 
-js- (let are local var in js)
-function formatTimeXX(t) says if the time is less than 10 seconds display and extra 0 to look like 00:00 instead of 0:0
+_JS- Function formatTimeXX(t) says if the time is less than 10 seconds display and extra 0 to look like 00:00 instead of 0:0_
 
-function updateTableTimerView 
- let min - declares time in seconds are 60 for one minute before restarting back at 0. Math.floor makes seconds into non integers not floating point numbers
- let sec - declares the time in seconds = the modulos of 60
- let timer - displays min with : then seconds
- if timeInSec = 0 the reset timer style to normal else if timeInSec = 3600 (1 hour) flash red
+*function updateTableTimerView
+* let min - declares time in seconds are 60 for one minute before restarting back at 0. Math.floor makes seconds into non integers not floating point numbers
+* let sec - declares the time in seconds = the modulus of 60
+* let timer - displays min with : then seconds
+* if timeInSec = 0 the reset timer style to normal else if timeInSec = 3600 (1 hour) flash red
  
- -The rest have comments by the functions-
+ _Toggle table functions are commented next to lines in code_
  
 # Menu
-Basic Idea- Have a slideshow, and a header with restaurant name and a link to go to seating and a checkout button to take user to the checkout page. There are 20 items each with a picture, title of food, description of food, price, a qty selector, and an "add" button.
+_Basic Idea- Have a slideshow, 20 menu items with an "add" to cart button, a header with restaurant name and links to go to seating and checkout. Added in side cart and navigation._
 
-The quantity is automatically at 1 for convenience to quickly press add for that item as it is often common to add only 1 of an item when buying food. There is a drop down arrow for qty 1-10, there is no limit to how much you can add of an item. On each click of the “Add” button next to the item it will add 1 to cart by default.
-There is a side navigation that follows your scroll for Appetizers, Main Course, Desserts, and Drinks to quickly navigate through the items.
-There is a side cart that follows your scroll with any items you added to cart. Also there are “Clear Cart” and “Checkout” buttons below it to quickly clear the order, or do a fast checkout. 
-*If you keeping clicking “Add” for the same item it will display in the side cart under the same item and the qty will go up by 1 on each click.
-There is also another big “Checkout” button on the very bottom of the menu.
+_For each menu item there is a quantity selector that is automatically at 1 for convenience to quickly press add for that item. A a drop down arrow for qty 1-10
+* No limit to how much you can add of an item. On each click of "Add" next to food item, button will add 1 of that item to cart.
+_ Side navigation that follows your scroll for Appetizers, Main Course, Desserts, and Drinks to quickly navigate through the items._
+_ Side cart that follows your scroll with any items you added to cart. Also Clear Cart and andCheckout buttons below to quickly clear the order, or do a fast checkout._
+*If you keeping clicking add for the same item it will display in the side cart under the same item name, only the qty will go up by 1 on each click.
+_ Additional checkout button on the very bottom of the menu._
 
-The menu items are in one JavaScript array with name, desc, icon, and price (some with slide) each in their categories of for Appetizers, Main Course, Desserts, and Drinks.
--The menu items, and side navigation are dynamically populated when the page is loaded.
+_ Menu items are in one JavaScript array with name, description, image, and price._
+_ Used SessionStorage to save recent selection on menu._
+_ Storage is only cleared on click of "Clear Cart", "Confirm Payment" credit card checkout, and "Confirm Payment" cash checkout._
+_ Menu items and side navigation are dynamically populated when the page is loaded_
 
 *slideshow made automatic by Resham
 
 
 # Checkout 
-Basic Idea-  On load of the checkout page the function displayCart will run and use sessionStorage to save the previous items added to cart and list them in order. There is an updateSummary function to calculate the subtotal, discount (if applicable), tax, tip, and total underneath the displayed cart items.
--Subtotal is all the items added together.
--Discount if order is $50 or more
--Tax rate of 8.875% 
--Tip is calculated after subtotal, discount, and tax. Options of 0%, 15%, 18%, or 20%
-On click of “Confirm Payment” in the credit card section, the cart will clear the sessionStorage and return an empty cart when linked back to the menu.
-On click of “Confirm Payment” in the cash section, the cart will clear *if you enter an amout of cash larger than the order amount* the sessionStorage and return an empty cart when linked back to the menu. Otherwise a pop up will say “Insufficient Funds” and when linked back to menu all previous history in sessionStorage will remain.
+_Basic Idea- On load of the checkout page, the function displayCart will use saved sessionStorage of items added to cart and list them in order._
+_ updateSummary function used to calculate the subtotal, discount (if applicable), tax, tip, and total underneath the displayed cart items.
+
+* Subtotal is all the items added together.
+* Discount if order is $50 or more $5 off
+* Tax rate of 8.875%
+* Tip is calculated after subtotal, discount, and tax. Options of 0%, 15%, 18%, or 20%
+
+_ On click of "Confirm Payment" in credit card section will clear Sessionstorage._
+_ On click of "Confirm Payment" in cash section will clear Sessionstorage only if * Sufficent amount of cash is entered to pay for the order. Else a window alert will alert "Insufficient Funds"._
 
 
 *Max credit card and CVV numbers made by using pattern attribute done by annalise
 
 
-# Authors  
+# Authors
+_Sierra Moore - Did login, table, and majority of menu and checkout page including javascript functions and Sessionstorage._
+
 https://github.com/Amy7 Amy Quan - Helped with the layout of the menu and table for the checkout page.
 
 https://github.com/waymackenzie Mackenzie Way - Did the first draft of credit card checkout fields.
