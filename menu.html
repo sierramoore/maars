@@ -282,7 +282,7 @@
             let orderItem = findOrderItem(orderList, menuItem); // find current menu item
 
             if (orderItem != null) {        // if the order item is more than 0
-                orderItem.qty += qty;       // add qty of item to that same line where it was first added (not multipule lines of the same item)
+                orderItem.qty += qty;       // add qty of item to that same line where it was first added (not multiple lines of the same item)
             }
             else {
                 orderList.push( { menuItem: menuItem, qty : qty } );    // then the item has not been added 2 or more times and just display the item added to cart for the first time

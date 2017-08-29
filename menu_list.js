@@ -47,7 +47,7 @@ var menuSections = [
             },
             {
                 name : "Half-half Pizza",
-                desc : "Mushroom, broccoli, chicken chunks, and tomato mixed with cheese 10 inch pie.",
+                desc : "Mushroom, broccoli, chicken chunks, and tomato mixed with cheese. 10 inch pie.",
                 icon : "https://s-media-cache-ak0.pinimg.com/originals/d6/9a/32/d69a32c8fca1e012b329e3570ee8d3c2.jpg",
                 price: 9
             },
@@ -66,7 +66,7 @@ var menuSections = [
             },
             {
                 name : "Mixed Sea Food",
-                desc : "Different varieties od sea weed boiled with added spices.",
+                desc : "Different varieties od seaweed boiled with added spices.",
                 icon : "http://whatisthaifood.com/wp-content/uploads/2012/12/thai_food.jpg",
                 price: 15,
                 slide: true
@@ -84,7 +84,7 @@ var menuSections = [
         list: [
             {
                 name : "Egg Roll Plate",
-                desc : "It comes with the fried egg rolled inside a bread mixed with sauces and decorated with some strawberries.",
+                desc : "It comes with the fried egg rolled inside a bread. Mixed with sauces and decorated with some strawberries.",
                 icon : "https://i.pinimg.com/736x/02/e6/42/02e6421751a5747ead364dc3c9faf19d--dutch-food-healthy-weight.jpg",
                 price: 10,
                 slide: true
