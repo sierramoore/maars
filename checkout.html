@@ -56,8 +56,18 @@
             width: 100px;
             display: block;
         }
-        .pay{
-            width: 25%;
+        .tableleft{
+            float: left;
+            margin: auto;
+            padding-left: 25%;
+            width: 400px;
+            line-height: 27px;
+        }
+        .tableright{
+            display: inline-block;
+            margin: auto;
+            width: 400px;
+            line-height: 35px;
         }
         .navbar{
             background-color:#aecfd3;
@@ -135,9 +145,9 @@
     </tr>
 </table>
 
+<div class="tableleft">
 <h3>Credit Card</h3>
-<div>
-    <table class="pay">
+    <table>
         <tr>
             <td align=left><b>Name on Card:</b></td>
             <td><input type=text placeholder="first and last name"></td>
@@ -157,16 +167,13 @@
             <td align=left><b>Expiration date:</b></td>
             <td><input type=month size=2></td>
         </tr>
-
     </table>
     <br>
     <center><input type=submit value="Confirm Payment" onclick="confirm()"></center>
-
 </div>
-
+<div class="tableright">
 <h3>Cash</h3>
-<div>
-    <table class="pay">
+    <table>
         <tr>
             <td><b>Cash amount:</b></td>
             <td><input id="cashAmount" onkeypress='return moneyFilter(event)' oninput="subtractCash()"></td>
