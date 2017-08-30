@@ -42,7 +42,7 @@ Basic Idea- Have a slideshow, 20 menu items with an "add" to cart button, a head
 For each menu item, there is a quantity selector that is automatically at 1 for convenience to quickly press add for that item. A drop down arrow for qty 1-10.
 * No limit to how much you can add of an item. On each click of "Add" next to food item, button will add 1 of that item to cart.
 * Side navigation that follows your scroll for Appetizers, Main Course, Desserts, and Drinks to quickly navigate through the items.
-* Side cart that follows your scroll with any items you added to cart. Also Clear Cart andCheckout buttons below to quickly clear the order, or do a fast checkout.
+* Side cart that follows your scroll with any items you added to cart. There is "Clear Cart" and "Checkout" buttons below to quickly clear the order, or do a fast checkout.
 * If you keeping clicking add for the same item it will display in the side cart under the same item name, only the qty will go up by 1 on each click.
 * Additional checkout button on the very bottom of the menu.
 
