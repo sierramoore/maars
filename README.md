@@ -39,10 +39,10 @@ Toggle table functions are commented next to lines in code
 ### **Menu:**
 Basic Idea- Have a slideshow, 20 menu items with an "add" to cart button, a header with restaurant name and links to go to seating and checkout. Added in side cart and navigation.
 
-For each menu item there is a quantity selector that is automatically at 1 for convenience to quickly press add for that item. A a drop down arrow for qty 1-10.
+For each menu item, there is a quantity selector that is automatically at 1 for convenience to quickly press add for that item. A drop down arrow for qty 1-10.
 * No limit to how much you can add of an item. On each click of "Add" next to food item, button will add 1 of that item to cart.
 * Side navigation that follows your scroll for Appetizers, Main Course, Desserts, and Drinks to quickly navigate through the items.
-  * Side cart that follows your scroll with any items you added to cart. Also Clear Cart and andCheckout buttons below to quickly clear the order, or do a fast checkout.
+* Side cart that follows your scroll with any items you added to cart. Also Clear Cart andCheckout buttons below to quickly clear the order, or do a fast checkout.
 * If you keeping clicking add for the same item it will display in the side cart under the same item name, only the qty will go up by 1 on each click.
 * Additional checkout button on the very bottom of the menu.
 
@@ -69,7 +69,7 @@ updateSummary function used to calculate the subtotal, discount (if applicable),
 
 On click of "Confirm Payment" in credit card section will clear Sessionstorage.
 
-On click of "Confirm Payment" in cash section will clear Sessionstorage only if * Sufficent amount of cash is entered to pay for the order. Else a window alert will alert "Insufficient Funds".
+On click of "Confirm Payment" in cash section will clear Sessionstorage only if * Sufficient amount of cash is entered to pay for the order. Else a window alert will alert "Insufficient Funds".
 
 
 *Max credit card and CVV numbers made by using pattern attribute done by annalise
