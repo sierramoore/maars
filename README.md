@@ -2,12 +2,12 @@
 Restaurant POS system - School project
 
 # Project Structure
-* [images]   - a folder of a picture of an empty table and an occupied table_
-* index.html - default page, redirects to login page_
-* login.html - employee login page username= maars, password= password_
-* table.html - 10 tables with onclick occupied image and timer_
-* menu.html  - a list of 20 items, with description, price, quantity selectors, sidebar, side cart, and slideshow_
-* checkout.html - lists items, prices, quantity, credit card and cash options_
+* [images]   - a folder of a picture of an empty table and an occupied table
+* index.html - default page, redirects to login page
+* login.html - employee login page username= maars, password= password
+* table.html - 10 tables with onclick occupied image and timer
+* menu.html  - a list of 20 items, with description, price, quantity selectors, sidebar, side cart, and slideshow
+* checkout.html - lists items, prices, quantity, credit card and cash options
 
 ### **Login:**
 Basic Idea - Create a login form with a specified username and password with a pop up window if username and/or password is incorrect.
