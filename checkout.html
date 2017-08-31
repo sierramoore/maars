@@ -63,6 +63,10 @@
             width: 400px;
             line-height: 27px;
         }
+        .tableleft td, .tableright td{
+            float:left;
+            padding-left: 5px;
+        }
         .tableright{
             display: inline-block;
             margin: auto;
@@ -149,22 +153,22 @@
 <h3>Credit Card</h3>
     <table>
         <tr>
-            <td align=left><b>Name on Card:</b></td>
+            <td><b>Name on Card:</b></td>
             <td><input type=text placeholder="first and last name"></td>
         </tr>
 
         <tr>
-            <td align=left><b>Card number:</b></td>
+            <td><b>Card number:</b></td>
             <td><input placeholder="1111-2222-3333-4444" min="16" max="16" pattern="[1-9]{16}"
                        onkeypress='return numberFilter(event)'></td>
         </tr>
         <tr>
-            <td align="left"><b>CVV:</b></td>
+            <td><b>CVC:</b></td>
             <td><input placeholder="123" size=4 min="3" max="3" pattern="[1-9]{3}"
                        onkeypress='return numberFilter(event)'></td>
         </tr>
         <tr>
-            <td align=left><b>Expiration date:</b></td>
+            <td><b>Expiration date:</b></td>
             <td><input type=month size=2></td>
         </tr>
     </table>
